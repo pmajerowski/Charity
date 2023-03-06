@@ -22,4 +22,9 @@ public class CategoryController {
         return categoryService.findById(categoryId);
     }
 
+    @PostMapping
+    public void addCategory(@RequestBody Category category) {
+        categoryService.saveCategory(category);
+    }
+
 }
