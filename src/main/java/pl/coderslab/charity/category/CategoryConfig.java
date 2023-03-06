@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoryConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(CategoryRepository categoryRepository) {
+    CommandLineRunner categoryCmdLineRunner(CategoryRepository categoryRepository) {
         return args -> {
             Category clothesCategory = new Category("Ubrania");
             Category furnitureCategory = new Category("Meble");
