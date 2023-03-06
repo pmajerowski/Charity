@@ -1,9 +1,7 @@
 package pl.coderslab.charity.category;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +15,11 @@ public class CategoryController {
     @GetMapping("/list")
     public List<Category> getCategories() {
         return categoryService.getAllCategories();
+    }
+
+    @GetMapping("/get/{categoryId}")
+    public Category getCategoryById(@PathVariable Long categoryId) {
+        return categoryService.findById(categoryId);
     }
 
 }
