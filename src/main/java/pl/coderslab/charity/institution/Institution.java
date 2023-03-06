@@ -25,10 +25,10 @@ public class Institution {
     )
     private Long id;
 
-    @Size(max = 255)
+    @Size(min = 4, max = 255)
     private String name;
 
-    @Size(max = 1000)
+    @Size(min = 20, max = 1000)
     private String description;
 
     public Institution(String name, String description) {

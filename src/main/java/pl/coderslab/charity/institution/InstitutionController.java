@@ -1,7 +1,6 @@
 package pl.coderslab.charity.institution;
 
 import lombok.AllArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,17 +33,9 @@ public class InstitutionController {
     }
 
     @PutMapping(path = "{institutionId}")
-    @Transactional
     public void updateInstitution(@PathVariable("institutionId") Long id,
                                   @RequestParam(required = false) String name,
                                   @RequestParam(required = false) String description) {
-        Institution institutionToUpdate = institutionService.findById(id);
-        if (name != null) {
-            institutionToUpdate.setName(name);
-        }
-        if (description != null) {
-            institutionToUpdate.setDescription(description);
-        }
-        institutionService.saveInstitution(institutionToUpdate);
+        institutionService.updateInstitution(id, name, description);
     }
 }

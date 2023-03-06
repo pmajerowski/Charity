@@ -25,7 +25,7 @@ public class Category {
     )
     private Long id;
 
-    @Size(max = 255)
+    @Size(min = 4, max = 255)
     private String name;
 
     public Category(String name) {
