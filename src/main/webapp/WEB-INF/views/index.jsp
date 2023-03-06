@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 
+    <%--HEADER--%>
     <jsp:include page="header.jsp" />
 
     <body>
@@ -130,7 +131,8 @@
             </div>
         </section>
 
-    <jsp:include page="footer.jsp"/>
+        <%--FOOTER--%>
+        <jsp:include page="footer.jsp"/>
 
     <script src="<c:url value="resources/js/app.js"/>"></script>
     </body>

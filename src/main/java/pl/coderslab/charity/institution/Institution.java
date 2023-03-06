@@ -31,7 +31,7 @@ public class Institution {
     @Size(max = 1000)
     private String description;
 
-    public Institution (String name, String description) {
+    public Institution(String name, String description) {
         this.name = name;
         this.description = description;
     }
