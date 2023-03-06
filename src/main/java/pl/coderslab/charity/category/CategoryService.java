@@ -24,6 +24,10 @@ public class CategoryService {
     }
 
     public void deleteCategoryById(Long id) {
+        boolean exists = categoryRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("Category with given id does not exist");
+        }
         categoryRepository.deleteById(id);
     }
 }
