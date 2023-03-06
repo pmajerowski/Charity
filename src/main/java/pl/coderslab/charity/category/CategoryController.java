@@ -1,6 +1,7 @@
 package pl.coderslab.charity.category;
 
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,17 @@ public class CategoryController {
     @DeleteMapping(path = {"{categoryId}"})
     public void deleteCategory(@PathVariable("categoryId") Long categoryId) {
         categoryService.deleteCategoryById(categoryId);
+    }
+
+    @PutMapping(path = "{categoryId}")
+    @Transactional
+    public void updateCategory(@PathVariable("categoryId") Long categoryId,
+                               @RequestParam(required = false) String name) {
+        Category categoryToUpdate = categoryService.findById(categoryId);
+        if (name != null) {
+            categoryToUpdate.setName(name);
+        }
+        categoryService.saveCategory(categoryToUpdate);
+
     }
 }
