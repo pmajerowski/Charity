@@ -28,7 +28,7 @@ public class CategoryController {
         categoryService.saveCategory(category);
     }
 
-    @DeleteMapping(path = {"{categoryId}"})
+    @DeleteMapping(path = "{categoryId}")
     public void deleteCategory(@PathVariable("categoryId") Long categoryId) {
         categoryService.deleteCategoryById(categoryId);
     }
