@@ -5,10 +5,12 @@ import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institution.Institution;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "donations")
@@ -28,20 +30,37 @@ public class Donation {
     )
     private Long id;
 
+    @Column
+    @NotNull
     @Size(min = 1)
     private Integer quantity;
 
     @OneToMany
-    private HashSet<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     @OneToOne
+    @JoinColumn(name = "institution_id")
     private Institution institution;
 
+    @Column
+    @NotNull
+    @Size(min=3, max=100)
     private String street;
+
+    @Column
+    @NotNull
+    @Size(min=3, max=120)
     private String city;
+
+    @Column
+    @NotNull
+    @Size(min=3, max=120)
     private String zipCode;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
+
+    @Column
+    @Size(max=500)
     private String pickUpComment;
 
 }
