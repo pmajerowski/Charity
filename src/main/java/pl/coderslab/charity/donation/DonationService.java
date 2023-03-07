@@ -13,5 +13,21 @@ public class DonationService {
         donationRepository.save(donation);
     }
 
+    public Integer numberOfDonations() {
+        Integer numberOfDonations = donationRepository.countAllDonations();
+        if (numberOfDonations == null) {
+            return 0;
+        }
+        return numberOfDonations;
+    }
+
+    public Integer numberOfBagsDonated() {
+        Integer numberOfBags = donationRepository.countAllBagsGiven();
+        if (numberOfBags == null) {
+            return 0;
+        }
+        return numberOfBags;
+    }
+
 
 }

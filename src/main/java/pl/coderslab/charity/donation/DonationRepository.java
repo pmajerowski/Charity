@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     @Query("SELECT  COUNT(d) FROM Donation d")
-    public int countAllDonations();
+    Integer countAllDonations();
 
-    @Query("SELECT COUNT(d.quantity) FROM Donation d")
-    public int countAllBagsGiven();
+    @Query("SELECT SUM(d.quantity) FROM Donation d")
+    Integer countAllBagsGiven();
 }

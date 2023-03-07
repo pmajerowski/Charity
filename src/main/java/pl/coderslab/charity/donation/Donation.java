@@ -1,6 +1,7 @@
 package pl.coderslab.charity.donation;
 
 import lombok.*;
+import org.springframework.format.annotation.NumberFormat;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institution.Institution;
 
@@ -31,8 +32,6 @@ public class Donation {
     private Long id;
 
     @Column
-    @NotNull
-    @Size(min = 1)
     private Integer quantity;
 
     @OneToMany
@@ -52,15 +51,26 @@ public class Donation {
     @Size(min=3, max=120)
     private String city;
 
-    @Column
+    @Column(name = "zip_code")
     @NotNull
     @Size(min=3, max=120)
     private String zipCode;
+
+    @Column(name = "pick_up_date")
     private LocalDate pickUpDate;
+
+    @Column(name = "pick_up_time")
     private LocalTime pickUpTime;
 
-    @Column
+    @Column(name = "pick_up_comment")
     @Size(max=500)
     private String pickUpComment;
 
+    public Donation(Long id, Integer quantity, String street, String city, String zipCode) {
+        this.id = id;
+        this.quantity = quantity;
+        this.street = street;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
 }
