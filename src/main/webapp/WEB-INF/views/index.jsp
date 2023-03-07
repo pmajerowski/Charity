@@ -104,28 +104,22 @@
                     Możesz sprawdzić czym się zajmują.</p>
 
                 <ul class="help--slides-items">
-                    <li>
-                        <div class="col">
-                            <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                            <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                        </div>
+                    <c:forEach items="${institutions}" var="institution" varStatus="status">
 
-                        <div class="col">
-                            <div class="title">Fundacja "A kogo"</div>
-                            <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                        </div>
-                    </li>
+                            <c:if test="${status.index == 0 || status.index % 2 == 0}">
+                                <li>
+                            </c:if>
 
-                    <li>
-                        <div class="col">
-                            <div class="title">Fundacja “Dla dzieci"</div>
-                            <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                        </div>
-                        <div class="col">
-                            <div class="title">Fundacja “Bez domu”</div>
-                            <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                        </div>
-                    </li>
+                                <div class="col">
+                                    <div class="title">${institution.name}</div>
+                                    <div class="subtitle">${institution.description}</div>
+                                </div>
+
+                            <c:if test="${status.index > 0 && status.index % 2 == 1}">
+                                </li>
+                            </c:if>
+
+                    </c:forEach>
                 </ul>
 
             </div>

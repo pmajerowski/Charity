@@ -28,9 +28,13 @@ public class InstitutionConfig {
                     new Institution(
                             "Fundacja \"Bez domu\"",
                             "Pomoc dla osób nie posiadających miejsca zamieszkania");
+            Institution kazdyOddech =
+                    new Institution(
+                            "Fundacja \"Każdy oddech\"",
+                            "Pomoc dla osób i dzieci przebywających w hospicjach");
 
             institutionRepository.saveAll(
-                    List.of(dbamOZdrowie, aKogo, dlaDzieci, bezDomu)
+                    List.of(dbamOZdrowie, aKogo, dlaDzieci, bezDomu, kazdyOddech)
             );
         };
     }
