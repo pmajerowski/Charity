@@ -20,7 +20,7 @@ public class DonationController {
     private final CategoryService categoryService;
     private final InstitutionService institutionService;
 
-    @GetMapping("/")
+    @GetMapping
     public String displayForm(Model model) {
         Donation donation = new Donation();
         model.addAttribute("donation", donation);
