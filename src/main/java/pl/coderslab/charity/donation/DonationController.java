@@ -25,8 +25,9 @@ public class DonationController {
     }
 
     @PostMapping
-    public void saveDonation(@RequestBody Donation donation) {
+    public String saveDonation(@RequestBody Donation donation) {
         donationService.saveDonation(donation);
+        return "redirect:form-confirmation";
     }
 
 
