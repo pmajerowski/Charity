@@ -160,22 +160,22 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Ulica <form:input path="street" /> </label>
+                                <label > Ulica <input type="text" id="street" name="street" /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Miasto <form:input path="city"/> </label>
+                                <label> Miasto <input type="text" id="city" name="city"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Kod pocztowy <form:input path="zipCode" />
+                                    Kod pocztowy <input type="text" id="zipCode" name="zipCode" />
                                 </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <form:input path="phone" />
+                                    Numer telefonu <input type="tel" id="phone" name="phone" />
                                 </label>
                             </div>
                         </div>
@@ -183,17 +183,17 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Data <form:input type="date" path="pickUpDate"/> </label>
+                                <label> Data <input type="date" id="date" name="pickUpDate"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Godzina <form:input type="time" path="pickUpTime" /> </label>
+                                <label> Godzina <input type="time" id="time" name="pickUpTime" /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
                                     Uwagi dla kuriera
-                                    <form:textarea rows="5" path="pickUpComment"/>
+                                    <input type="text" id="comment" rows="5" name="pickUpComment"/>
                                 </label>
                             </div>
                         </div>
@@ -242,9 +242,9 @@
                             <div class="form-section--column">
                                 <h4>Termin odbioru:</h4>
                                 <ul>
-                                    <li id="sum-date">13/12/2018</li>
-                                    <li id="sum-name">15:40</li>
-                                    <li id="sum-comment">Brak uwag</li>
+                                    <li id="sum-date">.</li>
+                                    <li id="sum-time">.</li>
+                                    <li id="sum-comment">.</li>
                                 </ul>
                             </div>
                         </div>

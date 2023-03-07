@@ -205,8 +205,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 sumInstitution.innerText = institutionSelected;
             });
 
-            // ADDRESS:
+            // ADDRESS AND PHONE NUMBER:
+            const street = document.getElementById("street");
+            const sumStreet = document.getElementById("sum-street");
+            sumStreet.innerText = street.value;
 
+            const city = document.getElementById("city");
+            const sumCity = document.getElementById("sum-city");
+            sumCity.innerText = city.value;
+
+            const zip = document.getElementById("zipCode");
+            const sumZip = document.getElementById("sum-zip");
+            sumZip.innerText = zip.value;
+
+            const phone = document.getElementById("phone");
+            const sumPhone = document.getElementById("sum-phone");
+            sumPhone.innerText = 'tel: ' + phone.value;
+
+            // PICKUP DATE AND TIME
+            const date = document.getElementById("date");
+            const sumDate = document.getElementById("sum-date");
+            sumDate.innerText = date.value;
+
+            const time = document.getElementById("time");
+            const sumTime = document.getElementById("sum-time");
+            sumTime.innerText = time.value;
+
+            // DELIVERY COMMENT
+            const comment = document.getElementById("comment");
+            const sumComment = document.getElementById("sum-comment");
+            sumComment.innerText = comment.value;
 
         };
 

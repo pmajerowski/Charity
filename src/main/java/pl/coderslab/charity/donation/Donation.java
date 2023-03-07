@@ -55,7 +55,6 @@ public class Donation {
     private LocalDate pickUpDate;
 
     @Column(name = "pick_up_time")
-    @DateTimeFormat(pattern = "hh:mm")
     private LocalTime pickUpTime;
 
     @Column(name = "pick_up_comment")
