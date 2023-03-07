@@ -11,7 +11,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +38,7 @@ public class Donation {
     private Integer quantity;
 
     @OneToMany
-    private Set<Category> categories = new HashSet<>();
+    private List<Category> categories = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "institution_id")
