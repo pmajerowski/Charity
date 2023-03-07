@@ -2,6 +2,7 @@ package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
@@ -20,7 +21,9 @@ public class DonationController {
     private final InstitutionService institutionService;
 
     @GetMapping("/")
-    public String displayForm() {
+    public String displayForm(Model model) {
+        Donation donation = new Donation();
+        model.addAttribute("donation", donation);
         return "form";
     }
 
