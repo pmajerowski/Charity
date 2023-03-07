@@ -37,7 +37,7 @@ public class Donation {
     @Column
     private Integer quantity;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
 
     @OneToOne

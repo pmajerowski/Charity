@@ -87,55 +87,15 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input
-                                    type="checkbox"
-                                    name="categories"
-                                    value="clothes-to-use"
-                            />
-                            <span class="checkbox"></span>
-                            <span class="description"
-                            >ubrania, które nadają się do ponownego użycia</span
-                            >
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input
-                                    type="checkbox"
-                                    name="categories"
-                                    value="clothes-useless"
-                            />
-                            <span class="checkbox"></span>
-                            <span class="description">ubrania, do wyrzucenia</span>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input type="checkbox" name="categories" value="toys" />
-                            <span class="checkbox"></span>
-                            <span class="description">zabawki</span>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input type="checkbox" name="categories" value="books" />
-                            <span class="checkbox"></span>
-                            <span class="description">książki</span>
-                        </label>
-                    </div>
-
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input type="checkbox" name="categories" value="other" />
-                            <span class="checkbox"></span>
-                            <span class="description">inne</span>
-                        </label>
-                    </div>
+                    <c:forEach var="category" items="${categories}">
+                        <div class="form-group form-group--checkbox">
+                            <label>
+                                <input type="checkbox" value="${category.id}" />
+                                <span class="checkbox"></span>
+                                <span class="description">${category.name}</span>
+                            </label>
+                        </div>
+                    </c:forEach>
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn next-step">Dalej</button>
@@ -161,7 +121,7 @@
 
 
 
-                <!-- STEP 4 -->
+                <!-- STEP 3 -->
                 <div data-step="3">
                     <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
@@ -199,7 +159,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 5 -->
+                <!-- STEP 4 -->
                 <div data-step="4">
                     <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -251,7 +211,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 6 -->
+                <!-- STEP 5 -->
                 <div data-step="5">
                     <h3>Podsumowanie Twojej darowizny</h3>
 
@@ -309,6 +269,7 @@
     <%--FOOTER--%>
     <jsp:include page="footer.jsp"/>
 
+    <script src="js/app.js"></script>
     <script src="<c:url value="resources/js/app.js"/>"></script>
     </body>
 </html>
