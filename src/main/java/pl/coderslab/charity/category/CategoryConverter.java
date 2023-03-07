@@ -9,8 +9,8 @@ public class CategoryConverter implements Converter<String, Category> {
     private final CategoryService categoryService;
 
     @Autowired
-    public CategoryConverter(CategoryService jpaBrewMethodService) {
-        this.categoryService = jpaBrewMethodService;
+    public CategoryConverter(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @Override

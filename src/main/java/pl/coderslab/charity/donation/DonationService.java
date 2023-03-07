@@ -9,6 +9,10 @@ public class DonationService {
 
     private final DonationRepository donationRepository;
 
+    public Donation findById(Long id) {
+        return donationRepository.findById(id).orElse(null);
+    }
+
     public void saveDonation(Donation donation) {
         donationRepository.save(donation);
     }
