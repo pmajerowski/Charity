@@ -1,6 +1,7 @@
 package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +28,10 @@ public class DonationController {
         return "form";
     }
 
-    @PostMapping
-    public String saveDonation(@RequestBody Donation donation) {
+    @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String saveDonation(Donation donation) {
         donationService.saveDonation(donation);
-        return "redirect:form-confirmation";
+        return "form-confirmation";
     }
 
 
