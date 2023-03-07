@@ -87,7 +87,7 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-                    <form:checkboxes path="categories" itemLabel="name" itemValue="id" items="${categories}"/>
+                    <form:checkboxes id="category" path="categories" itemLabel="name" itemValue="id" items="${categories}"/>
 
 <%--                    <c:forEach var="category" items="${categories}">--%>
 <%--                        <div class="form-group form-group--checkbox">--%>
@@ -108,7 +108,7 @@
                 <div data-step="2">
                     <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-                    <form:input type="number" step="1" min="1" path="quantity"/>
+                    <form:input id="count" type="number" step="1" min="1" path="quantity"/>
 <%--                    <div class="form-group form-group--inline">--%>
 <%--                        <label>--%>
 <%--                            Liczba 60l worków:--%>
@@ -128,7 +128,7 @@
                 <div data-step="3">
                     <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-                    <form:select path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>
+                    <form:select id="institution" path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>
 
 <%--                    <c:forEach var="inst" items="${institutions}">--%>
 <%--                        <div class="form-group form-group--checkbox">--%>
@@ -214,16 +214,16 @@
                             <ul>
                                 <li>
                                     <span class="icon icon-bag"></span>
-                                    <span class="summary--text"
-                                    >4 worki ubrań w dobrym stanie dla dzieci</span
-                                    >
+                                    <span class="summary--text" id="sum-donating">
+                                        <span id="sum-count">.</span> <span id="sum-category">.</span>
+                                    </span>
                                 </li>
 
                                 <li>
                                     <span class="icon icon-hand"></span>
-                                    <span class="summary--text"
-                                    >Dla fundacji "Mam marzenie" w Warszawie</span
-                                    >
+                                    <span class="summary--text" >
+                                        Dla kogo: <span id="sum-institution">.</span>
+                                    </span>
                                 </li>
                             </ul>
                         </div>
@@ -232,19 +232,19 @@
                             <div class="form-section--column">
                                 <h4>Adres odbioru:</h4>
                                 <ul>
-                                    <li>Prosta 51</li>
-                                    <li>Warszawa</li>
-                                    <li>99-098</li>
-                                    <li>123 456 789</li>
+                                    <li id="sum-street">Prosta 51</li>
+                                    <li id="sum-city">Warszawa</li>
+                                    <li id="sum-zip">99-098</li>
+                                    <li id="sum-phone">123 456 789</li>
                                 </ul>
                             </div>
 
                             <div class="form-section--column">
                                 <h4>Termin odbioru:</h4>
                                 <ul>
-                                    <li>13/12/2018</li>
-                                    <li>15:40</li>
-                                    <li>Brak uwag</li>
+                                    <li id="sum-date">13/12/2018</li>
+                                    <li id="sum-name">15:40</li>
+                                    <li id="sum-comment">Brak uwag</li>
                                 </ul>
                             </div>
                         </div>

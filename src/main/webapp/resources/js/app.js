@@ -164,6 +164,23 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      const count = document.getElementById("count").value;
+      console.log(count);
+      if (count == 1) {
+        document.getElementById("sum-count").innerText = '1 worek zawierający ';
+      } else if (count > 1 && count < 5) {
+        document.getElementById("sum-count").innerText = count + ' worki zawierające ';
+      } else {
+        document.getElementById("sum-count").innerText = count + ' worków zawierających ';
+      }
+
+      const categories = document.getElementsByName('categories');
+      categories.forEach(cat => cat.addEventListener('change', function (event) {
+         console.log(cat.value);
+      }))
+
+      const institution = document.getElementById("institution");
+      console.log(institution);
     }
 
   }
