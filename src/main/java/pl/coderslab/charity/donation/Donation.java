@@ -44,19 +44,12 @@ public class Donation {
     @JoinColumn(name = "institution_id")
     private Institution institution;
 
-    @Column
-    @NotNull
-    @Size(min=3, max=100)
+
     private String street;
 
-    @Column
-    @NotNull
-    @Size(min=3, max=120)
     private String city;
 
     @Column(name = "zip_code")
-    @NotNull
-    @Size(min=3, max=120)
     private String zipCode;
 
     @Column(name = "pick_up_date")
