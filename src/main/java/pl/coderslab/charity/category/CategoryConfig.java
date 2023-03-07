@@ -13,7 +13,7 @@ public class CategoryConfig {
     CommandLineRunner categoryCmdLineRunner(CategoryRepository categoryRepository) {
         return args -> {
             Category clothesCategory = new Category("Ubrania");
-            Category furnitureCategory = new Category("Meble");
+            Category shoesCategory = new Category("Buty");
             Category toysCategory = new Category("Zabawki");
             Category booksCategory = new Category("Książki");
             Category kitchenCategory = new Category("Artykuły kuchenne");
@@ -23,8 +23,8 @@ public class CategoryConfig {
 
             categoryRepository.saveAll(
                     List.of(clothesCategory,
+                            shoesCategory,
                             foodCategory,
-                            furnitureCategory,
                             toysCategory,
                             kitchenCategory,
                             booksCategory,
