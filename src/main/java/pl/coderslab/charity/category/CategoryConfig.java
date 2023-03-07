@@ -12,14 +12,14 @@ public class CategoryConfig {
     @Bean
     CommandLineRunner categoryCmdLineRunner(CategoryRepository categoryRepository) {
         return args -> {
-            Category clothesCategory = new Category("Ubrania");
-            Category shoesCategory = new Category("Buty");
-            Category toysCategory = new Category("Zabawki");
-            Category booksCategory = new Category("Książki");
-            Category kitchenCategory = new Category("Artykuły kuchenne");
-            Category hygieneCategory = new Category("Kosmetyki");
-            Category foodCategory = new Category("Żywność");
-            Category otherCategory = new Category("Inne");
+            Category clothesCategory = new Category("ubrania");
+            Category shoesCategory = new Category("buty");
+            Category toysCategory = new Category("zabawki");
+            Category booksCategory = new Category("książki");
+            Category kitchenCategory = new Category("artykuły kuchenne");
+            Category hygieneCategory = new Category("kosmetyki");
+            Category foodCategory = new Category("żywność");
+            Category otherCategory = new Category("inne");
 
             categoryRepository.saveAll(
                     List.of(clothesCategory,

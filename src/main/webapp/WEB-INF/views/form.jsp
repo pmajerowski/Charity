@@ -87,17 +87,17 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-                    <form:checkboxes id="category" path="categories" itemLabel="name" itemValue="id" items="${categories}"/>
+<%--                    <form:checkboxes id="category" path="categories" itemLabel="name" itemValue="id" items="${categories}"/>--%>
 
-<%--                    <c:forEach var="category" items="${categories}">--%>
-<%--                        <div class="form-group form-group--checkbox">--%>
-<%--                            <label>--%>
-<%--                                <input type="checkbox" name="categories" value="${category.id}">--%>
-<%--                                <span class="checkbox"></span>--%>
-<%--                                <span class="description">${category.name}</span>--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                    </c:forEach>--%>
+                    <c:forEach var="category" items="${categories}">
+                        <div class="form-group form-group--checkbox">
+                            <label>
+                                <input type="checkbox" name="categories" value="${category.id}">
+                                <span class="checkbox"></span>
+                                <span class="description">${category.name}</span>
+                            </label>
+                        </div>
+                    </c:forEach>
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn next-step">Dalej</button>
@@ -108,13 +108,13 @@
                 <div data-step="2">
                     <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-                    <form:input id="count" type="number" step="1" min="1" path="quantity"/>
-<%--                    <div class="form-group form-group--inline">--%>
-<%--                        <label>--%>
-<%--                            Liczba 60l worków:--%>
-<%--                            <input type="number" name="quantity" step="1" min="1" />--%>
-<%--                        </label>--%>
-<%--                    </div>--%>
+<%--                    <form:input id="count" type="number" step="1" min="1" path="quantity"/>--%>
+                    <div class="form-group form-group--inline">
+                        <label>
+                            Liczba 60l worków:
+                            <input type="number" id="count" name="quantity" step="1" min="1" />
+                        </label>
+                    </div>
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
@@ -128,22 +128,22 @@
                 <div data-step="3">
                     <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-                    <form:select id="institution" path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>
+<%--                    <form:select id="institution" path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>--%>
 
-<%--                    <c:forEach var="inst" items="${institutions}">--%>
-<%--                        <div class="form-group form-group--checkbox">--%>
-<%--                            <label>--%>
-<%--                                <input type="radio" name="institution" value="${inst.id}" />--%>
-<%--                                <span class="checkbox radio"></span>--%>
-<%--                                <span class="description">--%>
-<%--                                  <div class="title">${inst.name}</div>--%>
-<%--                                  <div class="subtitle">--%>
-<%--                                    Cel i misja: ${inst.description}--%>
-<%--                                  </div>--%>
-<%--                                </span>--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
-<%--                    </c:forEach>--%>
+                    <c:forEach var="inst" items="${institutions}">
+                        <div class="form-group form-group--checkbox">
+                            <label>
+                                <input type="radio" name="institution" value="${inst.id}" />
+                                <span class="checkbox radio"></span>
+                                <span class="description">
+                                  <div class="title">${inst.name}</div>
+                                  <div class="subtitle">
+                                    Cel i misja: ${inst.description}
+                                  </div>
+                                </span>
+                            </label>
+                        </div>
+                    </c:forEach>
 
 
                     <div class="form-group form-group--buttons">
@@ -200,7 +200,7 @@
                     </div>
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
-                        <button type="button" class="btn next-step">Dalej</button>
+                        <button type="button" id="toSummary" class="btn next-step">Dalej</button>
                     </div>
                 </div>
 
@@ -232,10 +232,10 @@
                             <div class="form-section--column">
                                 <h4>Adres odbioru:</h4>
                                 <ul>
-                                    <li id="sum-street">Prosta 51</li>
-                                    <li id="sum-city">Warszawa</li>
-                                    <li id="sum-zip">99-098</li>
-                                    <li id="sum-phone">123 456 789</li>
+                                    <li id="sum-street">.</li>
+                                    <li id="sum-city">.</li>
+                                    <li id="sum-zip">.</li>
+                                    <li id="sum-phone">.</li>
                                 </ul>
                             </div>
 
