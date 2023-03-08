@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // TODO: Validation
 
+
+
             this.slides.forEach(slide => {
                 slide.classList.remove("active");
 
@@ -164,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
-            // TODO: get data from inputs and show them in summary
+            // DONE: get data from inputs and show them in summary
 
             // NUMBER OF BAGS DONATED:
             const count = document.getElementById("count").value;
@@ -224,10 +226,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // PICKUP DATE AND TIME
             const date = document.getElementById("date");
+            let currentDate = new Date();
+            let tomorrowDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
+            date.valueAsDate = tomorrowDate;
             const sumDate = document.getElementById("sum-date");
             sumDate.innerText = date.value;
 
             const time = document.getElementById("time");
+            time.defaultValue = '12:30';
             const sumTime = document.getElementById("sum-time");
             sumTime.innerText = time.value;
 
