@@ -126,7 +126,7 @@
 
                 <!-- STEP 3 -->
                 <div data-step="3">
-                    <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+                    <h3>Wybierz organizację, której chcesz pomóc:</h3>
 
 <%--                    <form:select id="institution" path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>--%>
 
@@ -154,7 +154,7 @@
 
                 <!-- STEP 4 -->
                 <div data-step="4">
-                    <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+                    <h3>Podaj adres oraz termin odbioru rzeczy przez kuriera:</h3>
 
                     <div class="form-section form-section--columns">
                         <div class="form-section--column">
