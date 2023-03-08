@@ -196,20 +196,27 @@ document.addEventListener("DOMContentLoaded", function () {
             const cityInput = document.getElementById('city');
             const zipCodeInput = document.getElementById('zipCode');
             const phoneInput = document.getElementById('phone');
-
             const nextButton4 = document.getElementById('toSummary');
+
+            zipCodeInput.addEventListener('input', () => {
+                const zipCodeValue = zipCodeInput.value.replace(/\D/g, '');
+                if (zipCodeValue.length >= 2) {
+                    zipCodeInput.value = `${zipCodeValue.slice(0, 2)}-${zipCodeValue.slice(2)}`;
+                }
+            });
+
+            phoneInput.addEventListener('invalid', (event) => {
+                event.preventDefault();
+                alert('Proszę podać poprawny numer telefonu.');
+            });
 
             [streetInput, cityInput, zipCodeInput, phoneInput].forEach(input => {
                 input.addEventListener('input', () => {
                     const allFieldsFilled = streetInput.value !== ''
                                             && cityInput.value !== ''
                                             && zipCodeInput.value !== ''
-                                            && phoneInput.value !== '';
-                    if (allFieldsFilled) {
-                        nextButton4.disabled = false;
-                    } else {
-                        nextButton4.disabled = true;
-                    }
+                                            && phoneInput.value.match(/^\d{9}$/);
+                    nextButton4.disabled = !allFieldsFilled;
                 });
             });
 
