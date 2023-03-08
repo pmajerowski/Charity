@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateForm() {
             this.$step.innerText = this.currentStep;
 
-            // TODO: Validation
+            // DONE: Validation
 
             // STEP 1
             const checkboxes = document.querySelectorAll('input[type=checkbox]');
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
-            // DONE: get data from inputs and show them in summary
+            // DONE: Summary
 
             // NUMBER OF BAGS DONATED:
             const count = document.getElementById("count").value;
