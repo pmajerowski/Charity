@@ -153,6 +153,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // TODO: Validation
 
+            // STEP 1
+            const checkboxes = document.querySelectorAll('input[type=checkbox]');
+            const nextButton = document.getElementById('nextButton');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const atLeastOneChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+                    nextButton.disabled = !atLeastOneChecked;
+                });
+            });
+
+            // STEP 2
+            const countInput = document.getElementById('count');
+            const nextButton2 = document.getElementById('nextButton2');
+
+            countInput.addEventListener('input', () => {
+                nextButton2.disabled = countInput.value === '';
+            });
+
+            // STEP 3
+            const radioButtons = document.getElementsByName('institution');
+            const nextButton3 = document.getElementById('nextButton3');
+
+            for (let i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].addEventListener('change', () => {
+                    nextButton3.disabled = false;
+                });
+            }
+
+            // STEP 4
+            const streetInput = document.getElementById('street');
+            const cityInput = document.getElementById('city');
+            const zipCodeInput = document.getElementById('zipCode');
+            const phoneInput = document.getElementById('phone');
+
+            const nextButton4 = document.getElementById('toSummary');
+
+            [streetInput, cityInput, zipCodeInput, phoneInput].forEach(input => {
+                input.addEventListener('input', () => {
+                    const allFieldsFilled = streetInput.value !== ''
+                                            && cityInput.value !== ''
+                                            && zipCodeInput.value !== ''
+                                            && phoneInput.value !== '';
+                    if (allFieldsFilled) {
+                        nextButton4.disabled = false;
+                    } else {
+                        nextButton4.disabled = true;
+                    }
+                });
+            });
+
 
 
             this.slides.forEach(slide => {
@@ -225,10 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sumPhone.innerText = 'tel: ' + phone.value;
 
             // PICKUP DATE AND TIME
-            const date = document.getElementById("date");
-            let currentDate = new Date();
-            let tomorrowDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
-            date.valueAsDate = tomorrowDate;
+
             const sumDate = document.getElementById("sum-date");
             sumDate.innerText = date.value;
 
@@ -245,6 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
     }
+
+    const date = document.getElementById("date");
+    let currentDate = new Date();
+    date.valueAsDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
 
     const form = document.querySelector(".form--steps");
     if (form !== null) {

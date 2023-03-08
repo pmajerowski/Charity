@@ -33,7 +33,12 @@ public class Donation {
     @Column
     private Integer quantity;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "donations_categories",
+            joinColumns = { @JoinColumn(name = "donation_id") },
+            inverseJoinColumns = { @JoinColumn(name = "category_id") }
+    )
     private List<Category> categories = new ArrayList<>();
 
     @OneToOne

@@ -472,7 +472,12 @@ h2:after {
 }
 
 /* line 12, scss/modules/_buttons.scss */
-.btn:hover {
+.btn:disabled {
+  border-color: #ccc;
+  cursor: auto;
+}
+
+.btn:not([disabled]):hover {
   border-color: #f9c910;
 }
 

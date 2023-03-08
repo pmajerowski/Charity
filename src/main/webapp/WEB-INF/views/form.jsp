@@ -100,7 +100,7 @@
                     </c:forEach>
 
                     <div class="form-group form-group--buttons">
-                        <button type="button" class="btn next-step">Dalej</button>
+                        <button type="button" id="nextButton" class="btn next-step" disabled>Dalej</button>
                     </div>
                 </div>
 
@@ -118,7 +118,7 @@
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
-                        <button type="button" class="btn next-step">Dalej</button>
+                        <button type="button" id="nextButton2" class="btn next-step" disabled>Dalej</button>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
-                        <button type="button" class="btn next-step">Dalej</button>
+                        <button type="button" id="nextButton3" class="btn next-step" disabled>Dalej</button>
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <input type="tel" id="phone" name="phone" />
+                                    Numer telefonu <input type="tel" id="phone" name="phone"/>
                                 </label>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
-                        <button type="button" id="toSummary" class="btn next-step">Dalej</button>
+                        <button type="button" id="toSummary" class="btn next-step" disabled>Dalej</button>
                     </div>
                 </div>
 
