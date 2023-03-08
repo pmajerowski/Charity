@@ -19,6 +19,7 @@ public class CategoryConfig {
             Category kitchenCategory = new Category("artykuły kuchenne");
             Category hygieneCategory = new Category("kosmetyki");
             Category foodCategory = new Category("żywność");
+            Category electronicsCategory = new Category("elektronika");
             Category otherCategory = new Category("inne");
 
             categoryRepository.saveAll(
@@ -26,9 +27,10 @@ public class CategoryConfig {
                             shoesCategory,
                             foodCategory,
                             toysCategory,
-                            kitchenCategory,
                             booksCategory,
                             hygieneCategory,
+                            kitchenCategory,
+                            electronicsCategory,
                             otherCategory)
             );
         };
