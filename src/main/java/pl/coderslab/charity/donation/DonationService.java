@@ -2,6 +2,7 @@ package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -13,16 +14,13 @@ public class DonationService {
         return donationRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void saveDonation(Donation donation) {
         donationRepository.save(donation);
     }
 
     public Integer numberOfDonations() {
-        Integer numberOfDonations = donationRepository.countAllDonations();
-        if (numberOfDonations == null) {
-            return 0;
-        }
-        return numberOfDonations;
+        return donationRepository.countAllDonations().orElse(0);
     }
 
     public Integer numberOfBagsDonated() {
