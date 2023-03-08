@@ -464,17 +464,19 @@ h2:after {
   padding: 1em 1.666em;
   border: 1px solid #3c3c3c;
   text-align: center;
-  -webkit-transition: border-color 0.2s ease-in-out;
-  -o-transition: border-color 0.2s ease-in-out;
-  transition: border-color 0.2s ease-in-out;
+  -webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -o-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background: transparent;
   cursor: pointer;
+
 }
 
 /* line 12, scss/modules/_buttons.scss */
 .btn:disabled {
   border-color: #ccc;
   cursor: auto;
+
 }
 
 .btn:not([disabled]):hover {
