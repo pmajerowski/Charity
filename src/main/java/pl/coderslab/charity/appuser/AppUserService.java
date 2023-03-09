@@ -1,4 +1,4 @@
-package pl.coderslab.charity.appUser;
+package pl.coderslab.charity.appuser;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

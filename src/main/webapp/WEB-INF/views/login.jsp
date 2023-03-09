@@ -29,7 +29,7 @@
 
     <section class="login-page">
         <h2>Zaloguj się</h2>
-        <form:form action="" method="post" modelAttribute="appUser">
+        <form:form action="login" method="post" modelAttribute="user">
             <div class="form-group">
                 <input type="email" name="email" placeholder="Email" />
             </div>
