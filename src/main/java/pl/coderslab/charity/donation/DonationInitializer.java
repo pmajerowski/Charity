@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class DonationConfig {
+public class DonationInitializer {
 
     @Bean
     CommandLineRunner donationCmdLineRunner(DonationRepository donationRepository) {
+        if (donationRepository.count() > 0) {
+            return null;
+        }
         return args -> {
             Donation first =
                     new Donation(1L, 10, "Marszałkowska 135", "Warsaw", "00-410");

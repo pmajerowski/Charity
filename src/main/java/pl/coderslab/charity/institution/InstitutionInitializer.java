@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class InstitutionConfig {
+public class InstitutionInitializer {
 
     @Bean
     CommandLineRunner institutionCmdLineRunner(InstitutionRepository institutionRepository) {
+        if (institutionRepository.count() > 0) {
+            return null;
+        }
         return args -> {
             Institution dbamOZdrowie =
                     new Institution(

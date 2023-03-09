@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class CategoryConfig {
+public class CategoryInitializer {
 
     @Bean
     CommandLineRunner categoryCmdLineRunner(CategoryRepository categoryRepository) {
+        if (categoryRepository.count() > 0) {
+            return null;
+        }
         return args -> {
             Category clothesCategory = new Category("ubrania");
             Category shoesCategory = new Category("buty");
