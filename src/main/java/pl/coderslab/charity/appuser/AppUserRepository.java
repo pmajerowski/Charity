@@ -12,5 +12,4 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     @Query("select u from AppUser u where u.email=?1")
     Optional<AppUser> findByEmail(String email);
 
-    Optional<AppUser> findWithRolesByEmail(String email);
 }

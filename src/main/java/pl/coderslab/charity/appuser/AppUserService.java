@@ -16,14 +16,6 @@ public class AppUserService {
         return appUserRepository.findByEmail(email);
     }
 
-    public List<AppUser> getAllUsers() {
-        return appUserRepository.findAll();
-    }
-
-    public AppUser findUserById(Long id) {
-        return appUserRepository.findById(id).orElse(null);
-    }
-
     public void saveUser(AppUser user) {
         appUserRepository.save(user);
     }

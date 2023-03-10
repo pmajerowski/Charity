@@ -87,8 +87,6 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-<%--                    <form:checkboxes id="category" path="categories" itemLabel="name" itemValue="id" items="${categories}"/>--%>
-
                     <c:forEach var="category" items="${categories}">
                         <div class="form-group form-group--checkbox">
                             <label>
@@ -108,7 +106,6 @@
                 <div data-step="2">
                     <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-<%--                    <form:input id="count" type="number" step="1" min="1" path="quantity"/>--%>
                     <div class="form-group form-group--inline">
                         <label>
                             Liczba 60l worków:
@@ -127,8 +124,6 @@
                 <!-- STEP 3 -->
                 <div data-step="3">
                     <h3>Wybierz organizację, której chcesz pomóc:</h3>
-
-<%--                    <form:select id="institution" path="institution" itemLabel="name" itemValue="id" items="${institutions}"/>--%>
 
                     <c:forEach var="inst" items="${institutions}">
                         <div class="form-group form-group--checkbox">

@@ -42,7 +42,6 @@
 
             <div class="form-group form-group--buttons">
                 <button class="btn" type="submit">Załóż konto</button>
-<%--                <a href="login.html" class="btn btn--without-border">Zaloguj się</a>--%>
             </div>
         </form:form>
     </section>
