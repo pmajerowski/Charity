@@ -1,7 +1,6 @@
 package pl.coderslab.charity.appuser;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +15,6 @@ public class AppUserController {
     private final PasswordEncoder passwordEncoder;
 
     private final AppUserService appUserService;
-
-    private final UserDetailsService userDetailsService;
 
     @GetMapping("register")
     public String registerUser(Model model) {
@@ -40,15 +37,7 @@ public class AppUserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        AppUser appUser = new AppUser();
-        model.addAttribute("user", appUser);
+    public String login() {
         return "login";
-    }
-
-    @PostMapping("/login")
-    public String login(AppUser user, BindingResult bindingResult) {
-
-        return "redirect:form";
     }
 }

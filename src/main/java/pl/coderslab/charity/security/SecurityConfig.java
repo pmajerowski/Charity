@@ -1,6 +1,4 @@
 package pl.coderslab.charity.security;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,16 +12,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final PasswordEncoder passwordEncoder;
+
     private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(UserDetailsService userDetailsService) {
+    public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
+        this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-//                .passwordEncoder(passwordEncoder)
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
