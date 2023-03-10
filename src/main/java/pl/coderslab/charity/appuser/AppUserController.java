@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -25,10 +26,17 @@ public class AppUserController {
     }
 
     @PostMapping("register")
-    public String saveUser(AppUser user, BindingResult bindingResult) {
+    public String saveUser(AppUser user,
+                           BindingResult bindingResult,
+                           @RequestParam(name = "password2") String password2) {
         if (bindingResult.hasErrors()) {
             return null;
         }
+
+        if (user.getPassword() != password2) {
+
+        }
+
         user.setPassword(
                 passwordEncoder.encode(user.getPassword())
         );

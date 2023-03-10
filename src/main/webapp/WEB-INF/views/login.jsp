@@ -27,18 +27,13 @@
         <section class="login-page">
             <h2>Zaloguj się</h2>
 
-            <c:url value="/login" var="loginUrl"/>
-            <form action="${loginUrl}" method="post">
+            <form action="/login" method="post">
                 <c:if test="${param.error != null}">
                     <div class="error form-group">
                         Błędny email lub hasło
                     </div>
                 </c:if>
-                <c:if test="${param.logout != null}">
-                    <div class="ui-state-error">
-                        You have been logged out.
-                    </div>
-                </c:if>
+
                 <div class="form-group">
                     <input type="text" id="username" name="username" placeholder="Email"/>
                 </div>
