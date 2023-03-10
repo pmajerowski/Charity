@@ -123,7 +123,6 @@
                 </div>
 
 
-
                 <!-- STEP 3 -->
                 <div data-step="3">
                     <h3>Wybierz organizację, której chcesz pomóc:</h3>

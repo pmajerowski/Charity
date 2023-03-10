@@ -64,8 +64,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'ubrania'),(2,'buty'),(3,'żywność'),(4,'zabawki'),(5,'książki'),(6,'kosmetyki'),(7,'artykuły 
-kuchenne'),(8,'elektronika'),(9,'inne');
+INSERT INTO `categories` VALUES (1,'ubrania'),(2,'buty'),(3,'żywność'),(4,'zabawki'),(5,'książki'),(6,'kosmetyki'),(7,'artykuły \nkuchenne'),(8,'elektronika'),(9,'inne');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,10 +218,7 @@ CREATE TABLE `donations` (
 
 LOCK TABLES `donations` WRITE;
 /*!40000 ALTER TABLE `donations` DISABLE KEYS */;
-INSERT INTO `donations` VALUES (1,'Warszawa','522674565',NULL,NULL,NULL,10,'Marszałkowska 135','00-410',1),(2,'Berlin','228564756',NULL,NULL,NULL,4,'456 
-HossfundStrasse','18745',5),(3,'London','228431076',NULL,NULL,NULL,7,'32 Baker St','00981',1),(4,'Warszawa','888123456','','2023-03-10','12:30:00',2,'Mysia 
-12','00-414',4),(5,'Lublin','668429523','Klatka z tyłu budynku','2023-03-25','20:00:00',6,'Kwiatowa 
-14B/145','20-007',2),(6,'Słupsk','841233438','','2023-03-15','10:45:00',10,'Sobieskiego 11','76-200',3);
+INSERT INTO `donations` VALUES (1,'Warszawa','522674565',NULL,NULL,NULL,10,'Marszałkowska 135','00-410',1),(2,'Berlin','228564756',NULL,NULL,NULL,4,'456 \nHossfundStrasse','18745',5),(3,'London','228431076',NULL,NULL,NULL,7,'32 Baker St','00981',1),(4,'Warszawa','888123456','','2023-03-10','12:30:00',2,'Mysia \n12','00-414',4),(5,'Lublin','668429523','Klatka z tyłu budynku','2023-03-25','20:00:00',6,'Kwiatowa \n14B/145','20-007',2),(6,'Słupsk','841233438','','2023-03-15','10:45:00',10,'Sobieskiego 11','76-200',3);
 /*!40000 ALTER TABLE `donations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,9 +314,7 @@ CREATE TABLE `institutions` (
 
 LOCK TABLES `institutions` WRITE;
 /*!40000 ALTER TABLE `institutions` DISABLE KEYS */;
-INSERT INTO `institutions` VALUES (1,'Pomoc dzieciom z ubogich rodzin','Fundacja \"Dbam o Zdrowie\"'),(2,'Pomoc w wybudzaniu dzieci ze śpiączki','Fundacja \"A 
-kogo\"'),(3,'Pomoc osobom znajdującym się w trudnej sytuacji życiowej','Fundacja \"Dla dzieci\"'),(4,'Pomoc dla osób nie posiadających miejsca 
-zamieszkania','Fundacja \"Bez domu\"'),(5,'Pomoc dla osób i dzieci przebywających w hospicjach','Fundacja \"Każdy oddech\"');
+INSERT INTO `institutions` VALUES (1,'Pomoc dzieciom z ubogich rodzin','Fundacja \"Dbam o Zdrowie\"'),(2,'Pomoc w wybudzaniu dzieci ze śpiączki','Fundacja \"A \nkogo\"'),(3,'Pomoc osobom znajdującym się w trudnej sytuacji życiowej','Fundacja \"Dla dzieci\"'),(4,'Pomoc dla osób nie posiadających miejsca \nzamieszkania','Fundacja \"Bez domu\"'),(5,'Pomoc dla osób i dzieci przebywających w hospicjach','Fundacja \"Każdy oddech\"');
 /*!40000 ALTER TABLE `institutions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,31 +341,6 @@ INSERT INTO `request_sequence` VALUES (1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `role`
---
-
-DROP TABLE IF EXISTS `role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `role` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UKl5owutjid2yl0vvu8rh95r0nc` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (2,'ROLE_ADMIN'),(1,'ROLE_USER');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `roles`
 --
 
@@ -382,7 +351,7 @@ CREATE TABLE `roles` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,6 +360,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'ROLE_USER'),(2,'ROLE_ADMIN');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -417,6 +387,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+INSERT INTO `user_roles` VALUES (2,1),(2,2);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-09 22:01:17
+-- Dump completed on 2023-03-10 16:53:25
