@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+
 @Controller
 @AllArgsConstructor
 public class AppUserController {
@@ -26,12 +28,16 @@ public class AppUserController {
     }
 
     @PostMapping("register")
-    public String saveUser(AppUser user,
+    public String saveUser(@Valid AppUser user,
                            BindingResult bindingResult,
                            @RequestParam(name = "password2") String password2) {
         if (bindingResult.hasErrors()) {
             return null;
         }
+        // TODO: Set<Roles>
+
+        // TODO: AppUserDTO jako model
+
 
         if (user.getPassword() != password2) {
 
