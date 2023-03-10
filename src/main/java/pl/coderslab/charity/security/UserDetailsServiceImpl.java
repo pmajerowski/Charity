@@ -25,7 +25,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 
         AppUser appUser = userOptional.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return new User(appUser.getEmail(), appUser.getPassword(), appUser.getRoles());
+        return new User(
+                appUser.getEmail(),
+                appUser.getPassword(),
+                appUser.getEnabled(),
+                true,
+                true,
+                true,
+                appUser.getRoles()
+                );
     }
 }
 
