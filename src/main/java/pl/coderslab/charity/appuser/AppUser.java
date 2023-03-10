@@ -39,5 +39,9 @@ public class AppUser {
     private Set<Role> roles = new HashSet<>();
 
     // TODO: isActivated
-    private Boolean enabled;
+    private boolean enabled = true;
+
+    public boolean getEnabled() {
+        return enabled;
+    }
 }

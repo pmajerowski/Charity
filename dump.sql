@@ -286,7 +286,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy',NULL);
+INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy',true);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
