@@ -12,10 +12,10 @@
             <nav class="container container--70">
                 <ul class="nav--actions">
                     <li><a href="/login">Zaloguj</a></li>
-                    <li class="highlighted"><a href="#">Załóż konto</a></li>
+                    <li class="highlighted"><a href="/register">Załóż konto</a></li>
                 </ul>
                 <ul>
-                    <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
+                    <li><a href="/" class="btn btn--without-border active">Start</a></li>
                     <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
                     <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
                     <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -30,14 +30,14 @@
             <c:url value="/login" var="loginUrl"/>
             <form action="${loginUrl}" method="post">
                 <c:if test="${param.error != null}">
-                    <p class="ui-state-error-text">
-                        Invalid username and password.
-                    </p>
+                    <div class="error form-group">
+                        Błędny email lub hasło
+                    </div>
                 </c:if>
                 <c:if test="${param.logout != null}">
-                    <p class="ui-state-error">
+                    <div class="ui-state-error">
                         You have been logged out.
-                    </p>
+                    </div>
                 </c:if>
                 <div class="form-group">
                     <input type="text" id="username" name="username" placeholder="Email"/>
@@ -49,8 +49,8 @@
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
                 <div class="form-group form-group--buttons">
-                    <a href="login.html" class="btn">Zaloguj się</a>
-                    <button class="btn btn--without-border" type="submit">Załóż konto</button>
+                    <button class="btn" type="submit">Zaloguj się</button>
+                    <a href="/register" class="btn btn--without-border">Załóż konto</a>
                 </div>
             </form>
         </section>

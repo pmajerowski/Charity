@@ -431,6 +431,11 @@ h2:after {
   margin-left: calc(50% - 128px);
 }
 
+.error {
+  color: #d65132;
+  font-size: large;
+}
+
 /* line 25, scss/modules/_base.scss */
 .container {
   margin: 0 auto;
