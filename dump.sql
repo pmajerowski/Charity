@@ -16,35 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `app_user`
---
-
-DROP TABLE IF EXISTS `app_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `app_user` (
-  `id` bigint NOT NULL,
-  `app_user_role` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `enabled` bit(1) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `locked` bit(1) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `app_user`
---
-
-LOCK TABLES `app_user` WRITE;
-/*!40000 ALTER TABLE `app_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `app_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `categories`
 --
 
@@ -88,82 +59,6 @@ LOCK TABLES `category_sequence` WRITE;
 /*!40000 ALTER TABLE `category_sequence` DISABLE KEYS */;
 INSERT INTO `category_sequence` VALUES (10);
 /*!40000 ALTER TABLE `category_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `confirmation_token`
---
-
-DROP TABLE IF EXISTS `confirmation_token`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `confirmation_token` (
-  `id` bigint NOT NULL,
-  `confirmed_at` datetime(6) DEFAULT NULL,
-  `created_at` datetime(6) NOT NULL,
-  `expires_at` datetime(6) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `app_user_id` bigint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKo9fl25wqyh7w7mnfkdqen1rcm` (`app_user_id`),
-  CONSTRAINT `FKo9fl25wqyh7w7mnfkdqen1rcm` FOREIGN KEY (`app_user_id`) REFERENCES `app_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `confirmation_token`
---
-
-LOCK TABLES `confirmation_token` WRITE;
-/*!40000 ALTER TABLE `confirmation_token` DISABLE KEYS */;
-/*!40000 ALTER TABLE `confirmation_token` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `confirmation_token_sequence`
---
-
-DROP TABLE IF EXISTS `confirmation_token_sequence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `confirmation_token_sequence` (
-  `next_val` bigint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `confirmation_token_sequence`
---
-
-LOCK TABLES `confirmation_token_sequence` WRITE;
-/*!40000 ALTER TABLE `confirmation_token_sequence` DISABLE KEYS */;
-INSERT INTO `confirmation_token_sequence` VALUES (1);
-/*!40000 ALTER TABLE `confirmation_token_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `contact_requests`
---
-
-DROP TABLE IF EXISTS `contact_requests`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contact_requests` (
-  `id` bigint NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `contact_requests`
---
-
-LOCK TABLES `contact_requests` WRITE;
-/*!40000 ALTER TABLE `contact_requests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contact_requests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -250,28 +145,6 @@ INSERT INTO `donations_categories` VALUES (4,2),(4,4),(5,5),(5,6),(5,8),(6,1),(6
 UNLOCK TABLES;
 
 --
--- Table structure for table `hibernate_sequence`
---
-
-DROP TABLE IF EXISTS `hibernate_sequence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `hibernate_sequence`
---
-
-LOCK TABLES `hibernate_sequence` WRITE;
-/*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (1);
-/*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `institution_sequence`
 --
 
@@ -316,28 +189,6 @@ LOCK TABLES `institutions` WRITE;
 /*!40000 ALTER TABLE `institutions` DISABLE KEYS */;
 INSERT INTO `institutions` VALUES (1,'Pomoc dzieciom z ubogich rodzin','Fundacja \"Dbam o Zdrowie\"'),(2,'Pomoc w wybudzaniu dzieci ze śpiączki','Fundacja \"A \nkogo\"'),(3,'Pomoc osobom znajdującym się w trudnej sytuacji życiowej','Fundacja \"Dla dzieci\"'),(4,'Pomoc dla osób nie posiadających miejsca \nzamieszkania','Fundacja \"Bez domu\"'),(5,'Pomoc dla osób i dzieci przebywających w hospicjach','Fundacja \"Każdy oddech\"');
 /*!40000 ALTER TABLE `institutions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `request_sequence`
---
-
-DROP TABLE IF EXISTS `request_sequence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `request_sequence` (
-  `next_val` bigint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `request_sequence`
---
-
-LOCK TABLES `request_sequence` WRITE;
-/*!40000 ALTER TABLE `request_sequence` DISABLE KEYS */;
-INSERT INTO `request_sequence` VALUES (1);
-/*!40000 ALTER TABLE `request_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -424,6 +275,7 @@ CREATE TABLE `users` (
   `id` bigint NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `enabled` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -434,7 +286,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy');
+INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -447,4 +299,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-10 16:53:25
+-- Dump completed on 2023-03-10 17:40:30
