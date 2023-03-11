@@ -13,7 +13,7 @@
     <header>
         <nav class="container container--70">
             <ul class="nav--actions">
-                <li><a href="#">Zaloguj</a></li>
+                <li><a href="/login">Zaloguj</a></li>
                 <li class="highlighted"><a href="/register">Załóż konto</a></li>
             </ul>
 
@@ -29,12 +29,22 @@
 
     <section class="login-page">
         <h2>Załóż konto</h2>
-        <form:form method="post" modelAttribute="user">
+
+        <c:if test="${not empty userDTO.error}">
+            <div class="error form-group">${userDTO.error}</div>
+        </c:if>
+        <form:form action="/register" method="post" modelAttribute="userDTO">
             <div class="form-group">
-                <input type="email" name="email" placeholder="Email" />
+                <input type="text" name="firstName" placeholder="Imię" minlength="2" maxlength="40"/>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Hasło" />
+                <input type="text" name="lastName" placeholder="Nazwisko" minlength="2" maxlength="40"/>
+            </div>
+            <div class="form-group">
+                <input type="email" name="username" placeholder="Email" />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Hasło"/>
             </div>
             <div class="form-group">
                 <input type="password" name="password2" placeholder="Powtórz hasło" />
