@@ -42,7 +42,6 @@ public class AppUser {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    // TODO: isActivated
     private boolean enabled = true;
 
     public boolean getEnabled() {

@@ -79,7 +79,7 @@ CREATE TABLE `donation_sequence` (
 
 LOCK TABLES `donation_sequence` WRITE;
 /*!40000 ALTER TABLE `donation_sequence` DISABLE KEYS */;
-INSERT INTO `donation_sequence` VALUES (7);
+INSERT INTO `donation_sequence` VALUES (8);
 /*!40000 ALTER TABLE `donation_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +113,7 @@ CREATE TABLE `donations` (
 
 LOCK TABLES `donations` WRITE;
 /*!40000 ALTER TABLE `donations` DISABLE KEYS */;
-INSERT INTO `donations` VALUES (1,'Warszawa','522674565',NULL,NULL,NULL,10,'Marszałkowska 135','00-410',1),(2,'Berlin','228564756',NULL,NULL,NULL,4,'456 \nHossfundStrasse','18745',5),(3,'London','228431076',NULL,NULL,NULL,7,'32 Baker St','00981',1),(4,'Warszawa','888123456','','2023-03-10','12:30:00',2,'Mysia \n12','00-414',4),(5,'Lublin','668429523','Klatka z tyłu budynku','2023-03-25','20:00:00',6,'Kwiatowa \n14B/145','20-007',2),(6,'Słupsk','841233438','','2023-03-15','10:45:00',10,'Sobieskiego 11','76-200',3);
+INSERT INTO `donations` VALUES (4,'Warszawa','888123456','','2023-03-10','12:30:00',2,'Mysia \n12','00-414',4),(5,'Lublin','668429523','Klatka z tyłu budynku','2023-03-25','20:00:00',6,'Kwiatowa \n14B/145','20-007',2),(6,'Słupsk','841233438','','2023-03-15','10:45:00',10,'Sobieskiego 11','76-200',3),(7,'Szczyrk','864537212','Ostrożnie, stromy zjazd','2023-03-24','09:30:00',5,'Stara 9','94-176',4);
 /*!40000 ALTER TABLE `donations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +140,7 @@ CREATE TABLE `donations_categories` (
 
 LOCK TABLES `donations_categories` WRITE;
 /*!40000 ALTER TABLE `donations_categories` DISABLE KEYS */;
-INSERT INTO `donations_categories` VALUES (4,2),(4,4),(5,5),(5,6),(5,8),(6,1),(6,2),(6,4);
+INSERT INTO `donations_categories` VALUES (4,2),(4,4),(5,5),(5,6),(5,8),(6,1),(6,2),(6,4),(7,5),(7,6);
 /*!40000 ALTER TABLE `donations_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (2,1),(2,2);
+INSERT INTO `user_roles` VALUES (2,1);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +260,7 @@ CREATE TABLE `user_sequence` (
 
 LOCK TABLES `user_sequence` WRITE;
 /*!40000 ALTER TABLE `user_sequence` DISABLE KEYS */;
-INSERT INTO `user_sequence` VALUES (3);
+INSERT INTO `user_sequence` VALUES (9);
 /*!40000 ALTER TABLE `user_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,6 +276,8 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `enabled` bit(1) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -286,7 +288,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy',true);
+INSERT INTO `users` VALUES (2,'test@op.pl','$2a$10$woG1z.t59m0qrg/N1W7m2uQYUToc3QhyxYSw2czLxP1eC9OVwgOPy',_binary '','Jan','Nowak');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -299,4 +301,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-10 17:40:30
+-- Dump completed on 2023-03-11 11:45:16
