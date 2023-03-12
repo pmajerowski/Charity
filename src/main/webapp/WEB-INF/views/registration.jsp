@@ -31,9 +31,9 @@
         <h2>Załóż konto</h2>
 
         <c:if test="${not empty userDTO.error}">
-            <div class="error form-group">${userDTO.error}</div>
+            <div id="error" class="error form-group">${userDTO.error}</div>
         </c:if>
-        <form:form action="/register" method="post" modelAttribute="userDTO">
+        <form:form id="form" action="/register" method="post" modelAttribute="userDTO">
             <div class="form-group">
                 <input type="text" name="firstName" placeholder="Imię" minlength="2" maxlength="40" required/>
             </div>
@@ -44,15 +44,18 @@
                 <input type="email" name="username" placeholder="Email" required/>
             </div>
             <div class="form-group">
-                <input type="password" id="pass" name="password" placeholder="Hasło" required/>
+                <input type="password" id="pass" name="password" placeholder="Hasło" required/><br>
+                <span id="message" style="display: none; margin-top: 10px">
+                    Hasło powinno mieć długość przynajmniej 8 znaków,<br> posiadać małe i duże litery, cyfrę i znak specjalny
+                </span>
             </div>
             <div class="form-group">
-                <input type="password" id="pass2" name="password2" placeholder="Powtórz hasło" />
-                <span id="pass-check" style="font-size: large; color: #d65132" hidden="hidden">Podane hasła są różne</span>
+                <input type="password" id="pass2" name="password2" placeholder="Powtórz hasło" /><br>
+                <span id="pass-check" style="font-size: medium; color: #d65132" hidden="hidden">Podane hasła są różne</span>
             </div>
 
             <div class="form-group form-group--buttons">
-                <button class="btn" id="register_btn" type="submit">Załóż konto</button>
+                <button class="btn" id="register_btn" type="submit" disabled>Załóż konto</button>
             </div>
         </form:form>
     </section>
