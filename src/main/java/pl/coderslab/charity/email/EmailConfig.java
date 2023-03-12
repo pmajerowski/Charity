@@ -1,4 +1,4 @@
-package pl.coderslab.charity.security;
+package pl.coderslab.charity.email;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.context.annotation.Bean;
