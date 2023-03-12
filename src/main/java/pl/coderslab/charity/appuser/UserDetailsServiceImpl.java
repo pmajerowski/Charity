@@ -1,4 +1,4 @@
-package pl.coderslab.charity.security;
+package pl.coderslab.charity.appuser;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

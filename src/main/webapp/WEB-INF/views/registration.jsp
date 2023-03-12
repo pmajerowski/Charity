@@ -35,29 +35,31 @@
         </c:if>
         <form:form action="/register" method="post" modelAttribute="userDTO">
             <div class="form-group">
-                <input type="text" name="firstName" placeholder="Imię" minlength="2" maxlength="40"/>
+                <input type="text" name="firstName" placeholder="Imię" minlength="2" maxlength="40" required/>
             </div>
             <div class="form-group">
-                <input type="text" name="lastName" placeholder="Nazwisko" minlength="2" maxlength="40"/>
+                <input type="text" name="lastName" placeholder="Nazwisko" minlength="2" maxlength="40" required/>
             </div>
             <div class="form-group">
-                <input type="email" name="username" placeholder="Email" />
+                <input type="email" name="username" placeholder="Email" required/>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Hasło"/>
+                <input type="password" id="pass" name="password" placeholder="Hasło" required/>
             </div>
             <div class="form-group">
-                <input type="password" name="password2" placeholder="Powtórz hasło" />
+                <input type="password" id="pass2" name="password2" placeholder="Powtórz hasło" />
+                <span id="pass-check" style="font-size: large; color: #d65132" hidden="hidden">Podane hasła są różne</span>
             </div>
 
             <div class="form-group form-group--buttons">
-                <button class="btn" type="submit">Załóż konto</button>
+                <button class="btn" id="register_btn" type="submit">Załóż konto</button>
             </div>
         </form:form>
     </section>
 
     <%--FOOTER--%>
     <jsp:include page="footer.jsp"/>
+    <script src="<c:url value="resources/js/register.js"/>"></script>
 
     </body>
 </html>
