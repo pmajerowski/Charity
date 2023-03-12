@@ -57,4 +57,10 @@ public class RegistrationController {
         session.removeAttribute("userDTO");
         return registrationService.register(userDTO);
     }
+
+    @GetMapping(path = "/confirm")
+    public String confirm(@RequestParam("token") String token) {
+        registrationService.confirmToken(token);
+        return "redirect:/login";
+    }
 }

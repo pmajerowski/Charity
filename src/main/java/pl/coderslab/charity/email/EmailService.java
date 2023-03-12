@@ -26,9 +26,10 @@ public class EmailService implements EmailSender{
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Charity - potwierdzenie rezerwacji");
+            helper.setSubject("Charity - potwierdzenie rejestracji");
             helper.setFrom("cdonation6@gmail.com");
 
+            mailSender.send(mimeMessage);
 
         } catch (MessagingException e) {
             LOGGER.error("failed to send email", e);

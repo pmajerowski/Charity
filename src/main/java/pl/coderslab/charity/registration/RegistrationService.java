@@ -3,6 +3,7 @@ package pl.coderslab.charity.registration;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
 import pl.coderslab.charity.dto.UserDTO;
@@ -58,11 +59,36 @@ public class RegistrationService {
 
     }
 
+    @Transactional
+    public void confirmToken(String token) {
+        ConfirmationToken confirmationToken = confirmationTokenService
+                .getToken(token)
+                .orElseThrow(() ->
+                        new IllegalStateException("token not found"));
+
+        if (confirmationToken.getConfirmedAt() != null) {
+            throw new IllegalStateException("email already confirmed");
+        }
+
+        LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+
+        if (expiredAt.isBefore(LocalDateTime.now())) {
+            throw new IllegalStateException("token expired");
+        }
+
+        confirmationTokenService.setConfirmedAt(token);
+        appUserService.enableAppUser(
+                confirmationToken.getAppUser().getEmail());
+    }
+
     public String signUpUser(AppUser appUser) {
-        boolean userExists = appUserService.findByEmail(appUser.getEmail())
+        boolean userExists = appUserService
+                .findByEmail(appUser.getEmail())
                 .isPresent();
 
         if (userExists) {
+            // TODO: check if attributes are the same
+            // TODO: if email not confirmed send confirmation email
             throw new IllegalStateException("Email exists");
         }
 
