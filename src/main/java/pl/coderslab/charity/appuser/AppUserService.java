@@ -2,9 +2,12 @@ package pl.coderslab.charity.appuser;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.registration.token.ConfirmationToken;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -16,8 +19,8 @@ public class AppUserService {
         return appUserRepository.findByEmail(email);
     }
 
-    public void saveUser(AppUser user) {
-        appUserRepository.save(user);
+    public void saveUser(AppUser appUser) {
+        appUserRepository.save(appUser);
     }
 
     public void deleteUserById(Long id) {
