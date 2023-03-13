@@ -14,7 +14,6 @@ import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller

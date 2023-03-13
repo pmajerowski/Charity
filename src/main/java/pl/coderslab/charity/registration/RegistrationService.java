@@ -89,8 +89,7 @@ public class RegistrationService {
                 .isPresent();
 
         if (userExists) {
-            // TODO: check if attributes are the same
-            // TODO: if email not confirmed send confirmation email
+
             throw new IllegalStateException("Email exists");
         }
 
