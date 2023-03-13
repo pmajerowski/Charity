@@ -54,7 +54,8 @@ public class RegistrationService {
 
         emailSender.send(
                 request.getUsername(),
-                buildEmail(request.getFirstName(), link));
+                "Charity - potwierdzenie rejestracji",
+                buildAccountActivationEmail(request.getFirstName(), link));
         return "register-confirmation";
 
     }
@@ -74,6 +75,7 @@ public class RegistrationService {
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
+            // TODO: obsługa
         }
 
         confirmationTokenService.setConfirmedAt(token);
@@ -103,7 +105,6 @@ public class RegistrationService {
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        //TODO: send email
         return token;
     }
 }
