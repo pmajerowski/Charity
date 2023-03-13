@@ -38,14 +38,14 @@
                     <input type="text" id="username" name="username" placeholder="Email"/>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Password"/>
+                    <input type="password" id="password" name="password" placeholder="Hasło"/>
                 </div>
                 <input type="hidden"
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
                 <div class="form-group form-group--buttons">
                     <button class="btn" type="submit">Zaloguj się</button>
-                    <a href="/register" class="btn btn--without-border">Załóż konto</a>
+                    <a href="/pass_forgot" class="btn btn--without-border">Zapomniałæm hasła</a>
                 </div>
             </form>
         </section>
