@@ -25,7 +25,6 @@ public class HomeController {
         model.addAttribute("institutions", institutions);
 
         model.addAttribute("donationsNumber", donationService.numberOfDonations());
-
         model.addAttribute("bagsDonated", donationService.numberOfBagsDonated());
 
         return "index";

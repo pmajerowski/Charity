@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.email.EmailSender;
 
-import java.util.List;
 
 import static pl.coderslab.charity.email.EmailBuilder.buildDonationSummaryEmail;
 

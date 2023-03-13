@@ -1,13 +1,10 @@
 package pl.coderslab.charity.password;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
-import pl.coderslab.charity.appuser.UserDetailsServiceImpl;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
