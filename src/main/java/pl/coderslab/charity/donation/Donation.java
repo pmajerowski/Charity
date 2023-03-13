@@ -42,7 +42,7 @@ public class Donation {
     )
     private List<Category> categories = new ArrayList<>();
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
 
