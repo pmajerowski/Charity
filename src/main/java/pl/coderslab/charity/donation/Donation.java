@@ -2,6 +2,7 @@ package pl.coderslab.charity.donation;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institution.Institution;
 
@@ -44,6 +45,10 @@ public class Donation {
     @OneToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private AppUser appUser;
 
 
     private String street;

@@ -1,6 +1,7 @@
 package pl.coderslab.charity.appuser;
 
 import lombok.*;
+import pl.coderslab.charity.donation.Donation;
 import pl.coderslab.charity.role.Role;
 
 import javax.persistence.*;
@@ -42,6 +43,9 @@ public class AppUser {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "appUser")
+    private Set<Donation> donations;
 
     private boolean enabled = true;
 
