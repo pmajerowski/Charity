@@ -26,7 +26,7 @@
 
         <div class="slogan container container--90">
             <h2>
-                <span style="color: #f5f5f5">Aby dokończyć </span> proces rejestracji aktywuj konto
+                Aby dokończyć proces rejestracji aktywuj konto
                 klikając w link otrzymany w wiadomości e-mail.
             </h2>
         </div>

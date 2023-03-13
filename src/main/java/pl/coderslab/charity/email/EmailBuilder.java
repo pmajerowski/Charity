@@ -1,6 +1,9 @@
 package pl.coderslab.charity.email;
 
+import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.donation.Donation;
+
+import java.util.List;
 
 public class EmailBuilder {
     public static String buildAccountActivationEmail(String name, String link) {
@@ -78,7 +81,47 @@ public class EmailBuilder {
                 "</div></div>";
     }
 
-    public static String buildDonationSumaryEmail(Donation donation) {
-        return "kopytko";
+    public static String buildDonationSummaryEmail(Donation donation) {
+        List<Category> categories = donation.getCategories();
+        StringBuilder builder = new StringBuilder();
+
+        for(Category category : categories) {
+            builder.append(category.getName()).append(", ");
+        }
+        String categoriesString = builder.substring(0, builder.lastIndexOf(","));
+        return "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "  <head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <title>Szczegóły darowizny</title>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <h1>Dziękujemy za Twoją darowiznę!</h1>\n" +
+                "    <hr>\n" +
+                "    <p>Witaj " + donation.getAppUser().getFirstName() + ",</p>\n" +
+                "    <p>Pragniemy poinformować, że Twój wniosek o darowiznę został przekazany do realizacji. Szczegóły darowizny:</p>\n" +
+                "    <ul>\n" +
+                "      <li>Dla kogo: " + donation.getInstitution().getName() +"</li>\n" +
+                "      <li>Ile worków: " + donation.getQuantity() +"</li>\n" +
+                "      <li>Zawartość: " + categoriesString +"</li>\n" +
+                "    </ul>\n" +
+                "    <p>Państwa darowizna zostanie odebrana przez kuriera w dniu:</p>\n" +
+                "    <ul>\n" +
+                "      <li>Data: " + donation.getPickUpDate().toString() + "</li>\n" +
+                "      <li>Godzina: " + donation.getPickUpTime().toString() +  "</li>\n" +
+                "       <li>Uwagi dotyczące odbioru: " + donation.getPickUpComment() + "</li>\n" +
+                "    </ul>\n" +
+                "    <p>Adres odbioru:</p>\n" +
+                "    <ul>\n" +
+                "        <li>"+ donation.getStreet() + " </li>\n" +
+                "        <li>"+ donation.getCity() + " </li>\n" +
+                "        <li>"+ donation.getZipCode() + " </li>\n" +
+                "        <li>Telefon kontaktowy: "+ donation.getPhone() +  "</li>\n" +
+                "    </ul>\n" +
+                "    <p>Jeżeli masz jakiekolwiek wątpliwości, skontaktuj się z nami odpowiadając na tego emaila.</p>\n" +
+                "    <p>Dziękujemy,</p>\n" +
+                "    <p>Charity Donation</p>\n" +
+                "  </body>\n" +
+                "</html>";
     }
 }

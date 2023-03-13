@@ -38,10 +38,9 @@ public class DonationService {
     public void sendConfirmationEmail(Donation donation){
         String to = donation.getAppUser().getEmail();
         String subject = "Potwierdzenie darowizny - Charity";
-        String email = EmailBuilder.buildDonationSumaryEmail(donation);
+        String email = EmailBuilder.buildDonationSummaryEmail(donation);
 
-//        emailSender.send()
-    };
-
+        emailSender.send(to, subject, email);
+    }
 
 }
