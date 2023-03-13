@@ -89,9 +89,7 @@ public class EmailBuilder {
             builder.append(category.getName()).append(", ");
         }
         String categoriesString = builder.substring(0, builder.lastIndexOf(","));
-        return "<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "  <head>\n" +
+        return  "  <head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
                 "    <title>Szczegóły darowizny</title>\n" +
                 "  </head>\n" +
@@ -121,7 +119,6 @@ public class EmailBuilder {
                 "    <p>Jeżeli masz jakiekolwiek wątpliwości, skontaktuj się z nami odpowiadając na tego emaila.</p>\n" +
                 "    <p>Dziękujemy,</p>\n" +
                 "    <p>Charity Donation</p>\n" +
-                "  </body>\n" +
-                "</html>";
+                "  </body>\n";
     }
 }
