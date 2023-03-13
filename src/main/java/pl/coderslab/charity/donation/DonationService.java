@@ -32,7 +32,7 @@ public class DonationService {
 
     public void sendConfirmationEmail(Donation donation){
         String to = donation.getAppUser().getEmail();
-        String subject = "Potwierdzenie darowizny - Charity";
+        String subject = "Charity - Potwierdzenie darowizny";
         String email = buildDonationSummaryEmail(donation);
 
         emailSender.send(to, subject, email);
