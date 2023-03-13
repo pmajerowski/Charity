@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.email.EmailSender;
 
+import java.util.List;
+
 import static pl.coderslab.charity.email.EmailBuilder.buildDonationSummaryEmail;
 
 @Service
@@ -24,16 +26,8 @@ public class DonationService {
         donationRepository.save(donation);
     }
 
-    public Integer numberOfDonations() {
-        return donationRepository.countAllDonations().orElse(0);
-    }
-
-    public Integer numberOfBagsDonated() {
-        Integer numberOfBags = donationRepository.countAllBagsGiven();
-        if (numberOfBags == null) {
-            return 0;
-        }
-        return numberOfBags;
+    public List<Donation> getAllDonations() {
+        return donationRepository.findAll();
     }
 
     public void sendConfirmationEmail(Donation donation){
