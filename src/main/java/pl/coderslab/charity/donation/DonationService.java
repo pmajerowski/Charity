@@ -3,12 +3,15 @@ package pl.coderslab.charity.donation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.coderslab.charity.email.EmailSender;
 
 @Service
 @AllArgsConstructor
 public class DonationService {
 
     private final DonationRepository donationRepository;
+
+    private final EmailSender emailSender;
 
     public Donation findById(Long id) {
         return donationRepository.findById(id).orElse(null);
@@ -30,6 +33,14 @@ public class DonationService {
         }
         return numberOfBags;
     }
+
+    public void sendConfirmationEmail(Donation donation){
+        String to = donation.getAppUser().getEmail();
+        String subject = "Potwierdzenie darowizny - Charity";
+        String email;
+
+//        emailSender.send()
+    };
 
 
 }
