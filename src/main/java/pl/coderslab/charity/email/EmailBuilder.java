@@ -1,5 +1,7 @@
 package pl.coderslab.charity.email;
 
+import pl.coderslab.charity.donation.Donation;
+
 public class EmailBuilder {
     public static String buildAccountActivationEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
@@ -74,5 +76,9 @@ public class EmailBuilder {
                 "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
                 "\n" +
                 "</div></div>";
+    }
+
+    public static String buildDonationSumaryEmail(Donation donation) {
+        return "kopytko";
     }
 }

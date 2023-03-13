@@ -3,6 +3,7 @@ package pl.coderslab.charity.donation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.coderslab.charity.email.EmailBuilder;
 import pl.coderslab.charity.email.EmailSender;
 
 @Service
@@ -37,7 +38,7 @@ public class DonationService {
     public void sendConfirmationEmail(Donation donation){
         String to = donation.getAppUser().getEmail();
         String subject = "Potwierdzenie darowizny - Charity";
-        String email;
+        String email = EmailBuilder.buildDonationSumaryEmail(donation);
 
 //        emailSender.send()
     };
