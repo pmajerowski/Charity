@@ -1,5 +1,6 @@
 package pl.coderslab.charity.email;
 
+import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.donation.Donation;
 
@@ -120,5 +121,11 @@ public class EmailBuilder {
                 "    <p>Dziękujemy,</p>\n" +
                 "    <p>Charity Donation</p>\n" +
                 "  </body>\n";
+    }
+
+    public static String buildPasswordResetEmail(AppUser user, String token) {
+        String link = "http://localhost:8080/pass-reset/confirm?token=" + token;
+        return "<a href=\""
+                + link + "\">Resetuj hasło</a>";
     }
 }

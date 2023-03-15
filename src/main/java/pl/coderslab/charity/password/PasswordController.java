@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
+import pl.coderslab.charity.email.EmailBuilder;
+import pl.coderslab.charity.email.EmailSender;
 
-import javax.servlet.http.HttpSession;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @RequestMapping
@@ -16,6 +18,8 @@ import java.util.Optional;
 public class PasswordController {
 
     private final AppUserService appUserService;
+    private final PasswordService passwordService;
+    private final EmailSender emailSender;
 
     @GetMapping("/pass_forgot")
     public String forgottenPassForm() {
@@ -33,6 +37,14 @@ public class PasswordController {
         }
 
 //        TODO: Reset password, create new password form, send email
+
+        String token = UUID.randomUUID().toString();
+        passwordService.createPasswordResetTokenForUser(user.get(), token);
+        emailSender.send(
+                user.get().getEmail(),
+                "Charity - reset hasła",
+                EmailBuilder.buildPasswordResetEmail(user.get(), token));
+
         return "pass-reset-confirmation";
     }
 
