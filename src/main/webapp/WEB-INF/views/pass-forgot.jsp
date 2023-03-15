@@ -24,8 +24,7 @@
         </nav>
     </header>
     <section class="login-page">
-        <h1>Podaj adres email, do którego przypisane jest konto. </h1>
-        <h3>Na podany adres wyślemy link, dzięki któremu nadasz nowe hasło. </h3>
+        <h2>Podaj adres email, do którego przypisane jest konto. </h2>
 
         <form action="/pass_forgot/email" method="get">
             <c:if test="${no_email != null}">
@@ -33,9 +32,22 @@
                     ${no_email}
                 </div>
             </c:if>
+            <c:if test="${param.error == 'token_expired'}">
+                <div class="error form-group">
+                        Link wygasł. Podaj email, aby wysłać ponownie.
+                </div>
+            </c:if>
+            <c:if test="${param.error == 'error'}">
+                <div class="error form-group">
+                    Coś poszło nie tak, spróbuj ponownie.
+                </div>
+            </c:if>
+
+            <h3>Na podany adres wyślemy link, dzięki któremu nadasz nowe hasło. </h3>
             <div class="form-group">
                 <input type="email" name="email" placeholder="Email">
             </div>
+
             <div class="form-group">
                 <button type="submit" class="btn">Wyślij</button>
             </div>

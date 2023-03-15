@@ -15,6 +15,10 @@ public class AppUserService {
         return appUserRepository.findByEmail(email);
     }
 
+    public Optional<AppUser> findById(Long userId) {
+        return appUserRepository.findById(userId);
+    }
+
     public void saveUser(AppUser appUser) {
         appUserRepository.save(appUser);
     }
@@ -26,4 +30,5 @@ public class AppUserService {
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+
 }
