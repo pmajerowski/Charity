@@ -30,21 +30,48 @@
     <section class="login-page">
         <h2>Załóż konto</h2>
 
-        <c:if test="${not empty userDTO.error}">
-            <div id="error" class="error form-group">${userDTO.error}</div>
-        </c:if>
         <form:form id="form" action="/register" method="post" modelAttribute="userDTO">
             <div class="form-group">
-                <input type="text" name="firstName" placeholder="Imię" minlength="2" maxlength="40" required/>
+
+                <input type="text"
+                       name="firstName"
+                       placeholder="Imię"
+                       minlength="2"
+                       maxlength="40"
+                       value="${userDTO.firstName}"
+                       required/>
             </div>
             <div class="form-group">
-                <input type="text" name="lastName" placeholder="Nazwisko" minlength="2" maxlength="40" required/>
+
+                <input type="text"
+                       name="lastName"
+                       placeholder="Nazwisko"
+                       minlength="2"
+                       maxlength="40"
+                       value="${userDTO.lastName}"
+                       required/>
             </div>
             <div class="form-group">
-                <input type="email" name="username" placeholder="Email" required/>
+
+                <input type="email"
+                       name="username"
+                       placeholder="Email"
+                       value="${userDTO.username}"
+                       required/>
+
+                <c:if test="${not empty userDTO.error}">
+                    <div id="error" class="error form-group">${userDTO.error}</div>
+                </c:if>
+
             </div>
             <div class="form-group">
-                <input type="password" id="pass" name="password" placeholder="Hasło" required/><br>
+
+                <input type="password"
+                       id="pass"
+                       name="password"
+                       placeholder="Hasło"
+                       required/>
+                <br>
                 <span id="message" style="display: none; margin-top: 10px">
                     Hasło powinno mieć długość przynajmniej 8 znaków,<br> posiadać małe i duże litery, cyfrę i znak specjalny
                 </span>

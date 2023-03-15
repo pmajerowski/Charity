@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.appuser.AppUserService;
 import pl.coderslab.charity.dto.UserDTO;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -21,15 +20,9 @@ public class RegistrationController {
     private final AppUserService appUserService;
 
     @GetMapping
-    public String registerUser(Model model, HttpSession session) {
-        if (session.getAttribute("userDTO") != null) {
-            return "registration";
-        }
-        session.removeAttribute("userDTO");
-
+    public String registerUser(Model model) {
         UserDTO userDTO = new UserDTO();
         model.addAttribute("userDTO", userDTO);
-        session.setAttribute("userDTO", userDTO);
 
         return "registration";
     }
@@ -38,8 +31,8 @@ public class RegistrationController {
     @PostMapping
     public String register(@Valid UserDTO userDTO,
                            BindingResult bindingResult,
-                           Model model,
-                           HttpSession session) {
+                           Model model
+    ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute(
@@ -52,11 +45,11 @@ public class RegistrationController {
             userDTO.setError(
                     "Istnieje już konto powiązane z tym adresem email"
             );
-            session.setAttribute("userDTO", userDTO);
-            return "redirect:/register";
+            model.addAttribute("userDTO", userDTO);
+            return "registration";
         }
+        userDTO.setError(null);
 
-        session.removeAttribute("userDTO");
         return registrationService.register(userDTO);
     }
 
