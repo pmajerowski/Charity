@@ -23,9 +23,6 @@ public class AppUserService {
         appUserRepository.save(appUser);
     }
 
-    public void deleteUserById(Long id) {
-        appUserRepository.deleteById(id);
-    }
 
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
