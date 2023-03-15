@@ -42,7 +42,7 @@ public class DonationController {
 
         donation.setAppUser(appUser);
         donationService.saveDonation(donation);
-        donationService.sendConfirmationEmail(donation);
+
         return "form-confirmation";
     }
 

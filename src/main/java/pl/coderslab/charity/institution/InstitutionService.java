@@ -1,6 +1,7 @@
 package pl.coderslab.charity.institution;
 
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,10 @@ public class InstitutionService {
     }
 
     public void saveInstitution(Institution institution) {
+        Boolean institutionExists = institutionRepository.existsByName(institution.getName());
+        if (institutionExists) {
+            throw new DataIntegrityViolationException("Institution " + institution.getName() + " already exists");
+        }
         institutionRepository.save(institution);
     }
 
@@ -44,6 +49,8 @@ public class InstitutionService {
         if (description != null && description.length() > 0) {
             institution.setDescription(description);
         }
+
+        institutionRepository.save(institution);
 
     }
 
