@@ -25,10 +25,10 @@ pass1.onblur = function () {
 }
 
 pass1.onkeyup = function() {
-    pass1.style.backgroundColor = "rgba(252,123,123,0.75)";
+    pass1.style.backgroundColor = "rgba(245,137,137,0.75)";
 
     if(pattern.test(pass1.value)) {
-        pass1.style.backgroundColor = "rgba(208,238,119,0.75)";
+        pass1.style.backgroundColor = "rgba(240,250,161,0.75)";
         btn.disabled = false;
     }
 }

@@ -125,7 +125,21 @@ public class EmailBuilder {
 
     public static String buildPasswordResetEmail(AppUser user, String token) {
         String link = "http://localhost:8080/pass-reset/confirm?token=" + token + "&user_id=" + user.getId();
-        return "<a href=\""
-                + link + "\">Resetuj hasło</a>";
+
+        return  "  <head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <title>Reset hasła</title>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <h1>Reset hasła</h1>\n" +
+                "    <hr>\n" +
+                "    <p>Witaj " + user.getFirstName() + ",</p>\n" +
+                "    <p>Aby ustawić nowe hasło, kliknij w poniższy link:</p>\n" +
+                "    <a href=\"" + link + "\">Resetuj hasło</a>" +
+                "    <p>Jeżeli uważasz,że to pomyłka, zignoruj tę wiadomość</p>\n" +
+                "    <p>Dziękujemy,</p>\n" +
+                "    <p>Charity Donation</p>\n" +
+                "  </body>\n";
+
     }
 }
