@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Service
 @AllArgsConstructor
 public class PasswordService {
-    private final EmailService emailService;
+
     private final PasswordRepository passwordRepository;
 
 
