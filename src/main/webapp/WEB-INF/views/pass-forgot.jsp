@@ -28,9 +28,9 @@
         <h3>Na podany adres wyślemy link, dzięki któremu nadasz nowe hasło. </h3>
 
         <form action="/pass_forgot/email" method="get">
-            <c:if test="${sessionScope.no_email != null}">
+            <c:if test="${no_email != null}">
                 <div class="error form-group">
-                    ${sessionScope.no_email}
+                    ${no_email}
                 </div>
             </c:if>
             <div class="form-group">
