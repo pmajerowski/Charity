@@ -675,6 +675,10 @@ form .form-group--dropdown .dropdown {
   position: relative;
 }
 
+.dropdown li a:hover {
+  color: #f9c910;
+}
+
 /* line 111, scss/modules/_forms.scss */
 form .form-group--dropdown .dropdown.selecting > div {
   display: none;
@@ -1099,8 +1103,8 @@ header nav ul {
 
 /* line 16, scss/modules/_navigation.scss */
 header nav ul.nav--actions {
-  font-size: 1.4rem;
-  color: #737373;
+  font-size: 1.5rem;
+  color: #282828;
   margin: 30px 0 8px;
 }
 
@@ -1111,7 +1115,11 @@ header nav ul.nav--actions .logged-user {
   cursor: pointer;
 }
 
-/* line 26, scss/modules/_navigation.scss */
+header nav ul.nav--actions .logged-user:hover {
+  color: #f9c910;
+}
+
+  /* line 26, scss/modules/_navigation.scss */
 header nav ul.nav--actions .logged-user:after {
   content: "";
   width: 15px;
@@ -1135,8 +1143,8 @@ header nav ul.nav--actions .logged-user ul {
   text-align: right;
   background-color: #fff;
   padding: 12px 0 0;
-  font-size: 1.4rem;
-  width: 120px;
+  font-size: 1.6rem;
+  width: 130px;
   right: 0;
 }
 

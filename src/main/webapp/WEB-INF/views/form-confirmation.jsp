@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -11,14 +12,20 @@
     <header class="header--form-page">
         <nav class="container container--70">
             <ul class="nav--actions">
-                <li class="logged-user">
-                    Witaj Agata
-                    <ul class="dropdown">
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Moje zbiórki</a></li>
-                        <li><a href="#">Wyloguj</a></li>
-                    </ul>
-                </li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="logged-user">
+                        Witaj ${user.firstName}
+                        <ul class="dropdown">
+                            <li><a href="#">Profil</a></li>
+                            <li><a href="#">Moje zbiórki</a></li>
+                            <li><a href="#" id="logout-link">Wyloguj</a></li>
+
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                            </form>
+                        </ul>
+                    </li>
+                </sec:authorize>
             </ul>
 
             <ul>

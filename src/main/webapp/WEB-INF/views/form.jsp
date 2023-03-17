@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -12,21 +13,24 @@
     <header class="header--form-page">
         <nav class="container container--70">
             <ul class="nav--actions">
-                <li class="logged-user">
-                    Witaj Agata
-                    <ul class="dropdown">
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Moje zbiórki</a></li>
-                        <li><form action="<c:url value="/logout"/>" method="post">
-                            <input type="submit" value="Wyloguj">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form></li>
-                    </ul>
-                </li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="logged-user">
+                        Witaj ${user.firstName}
+                        <ul class="dropdown">
+                            <li><a href="#">Profil</a></li>
+                            <li><a href="#">Moje zbiórki</a></li>
+                            <li><a href="#" id="logout-link">Wyloguj</a></li>
+
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                            </form>
+                        </ul>
+                    </li>
+                </sec:authorize>
             </ul>
 
             <ul>
-                <li><a href="/" class="btn btn--without-border active">Start</a></li>
+                <li><a href="/" class="btn btn--without-border">Start</a></li>
                 <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
                 <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
                 <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
