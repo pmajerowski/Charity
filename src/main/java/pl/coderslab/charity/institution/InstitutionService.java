@@ -29,6 +29,10 @@ public class InstitutionService {
         institutionRepository.save(institution);
     }
 
+    public void updateInstitution(Institution institution) {
+        institutionRepository.save(institution);
+    }
+
     public void deleteInstitutionById(Long id) {
         boolean exists = institutionRepository.existsById(id);
         if (!exists) {
