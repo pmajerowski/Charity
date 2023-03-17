@@ -38,10 +38,8 @@ public class InstitutionController {
 
     @PostMapping( "/delete/{institutionId}")
     public String deleteInstitution(@PathVariable("institutionId") Long id) {
-        Institution institution = institutionService.findById(id);
-        institution.setIsActive(false);
-        institutionService.updateInstitution(institution);
-        return "redirect:/admin/institutions";
+        institutionService.deleteInstitutionById(id);
+        return "/admin/institutions";
     }
 
     @PutMapping(path = "{institutionId}")
