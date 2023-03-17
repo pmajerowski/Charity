@@ -11,12 +11,9 @@
 <%--HEADER--%>
 <jsp:include page="header.jsp" />
 
-    <body>
-        <form method="post">
-            <a class="btn" href="/admin/institutions">Anuluj</a>
-            <button type="submit" class="btn">Usuń</button>
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
-        </form>
-    </body>
+<body>
+<h2>ADD NEW INSTITUTION</h2>
+<form method="post">
+
+</form>
+</body>
