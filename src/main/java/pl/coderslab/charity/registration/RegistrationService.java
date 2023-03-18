@@ -7,12 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
 import pl.coderslab.charity.dto.UserDTO;
+import pl.coderslab.charity.email.CredentialsProvider;
 import pl.coderslab.charity.email.EmailSender;
 import pl.coderslab.charity.registration.token.ConfirmationToken;
 import pl.coderslab.charity.registration.token.ConfirmationTokenService;
 import pl.coderslab.charity.role.Role;
 import pl.coderslab.charity.role.RoleService;
-
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -30,6 +30,7 @@ public class RegistrationService {
     private final RoleService roleService;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+    private final CredentialsProvider credentialsProvider;
 
     public String register(UserDTO request) {
         boolean isEmailValid = emailValidator.test(request.getUsername());
@@ -47,15 +48,22 @@ public class RegistrationService {
 
         Set<Role> roles = roleService.findRolesByName("ROLE_USER");
         appUser.setRoles(roles);
-        appUser.setEnabled(false);
-         String token = signUpUser(appUser);
 
-        String link = "http://localhost:8080/register/confirm?token=" + token;
+        if (credentialsProvider.areCredentialsConfigured()) {
+            appUser.setEnabled(false);
+            String token = signUpUser(appUser);
 
-        emailSender.send(
-                request.getUsername(),
-                "Charity - potwierdzenie rejestracji",
-                buildAccountActivationEmail(request.getFirstName(), link));
+            String link = "http://localhost:8080/register/confirm?token=" + token;
+
+            emailSender.send(
+                    request.getUsername(),
+                    "Charity - potwierdzenie rejestracji",
+                    buildAccountActivationEmail(request.getFirstName(), link));
+        } else {
+            appUser.setEnabled(true);
+            signUpUser(appUser);
+        }
+
         return "register-confirmation";
 
     }

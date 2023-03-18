@@ -10,9 +10,9 @@ import java.util.Properties;
 public class EmailConfig {
 
     @Bean
-    public JavaMailSender javaMailSender() {
-        String password = System.getenv("EMAIL_PASSWORD");
-        String email = System.getenv("EMAIL");
+    public JavaMailSender javaMailSender(CredentialsProvider credentialsProvider) {
+        String password = credentialsProvider.getPassword();
+        String email = credentialsProvider.getEmail();
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");

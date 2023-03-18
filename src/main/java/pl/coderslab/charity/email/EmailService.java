@@ -8,7 +8,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -16,8 +15,10 @@ import javax.mail.internet.MimeMessage;
 @AllArgsConstructor
 public class EmailService implements EmailSender {
 
-    private final JavaMailSender mailSender;
     private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+
+    private final JavaMailSender mailSender;
+    private final CredentialsProvider credentialsProvider;
 
     @Override
     @Async
@@ -41,7 +42,7 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setFrom(System.getenv("EMAIL"));
+            helper.setFrom(credentialsProvider.getEmail());
 
             return helper;
 
