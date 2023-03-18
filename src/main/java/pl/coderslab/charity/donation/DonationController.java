@@ -47,7 +47,7 @@ public class DonationController {
         model.addAttribute("user", appUser);
 
         donation.setAppUser(appUser);
-//        donationService.saveDonation(donation);
+        donationService.saveDonation(donation);
 
         return "form-confirmation";
     }

@@ -34,6 +34,7 @@ public class InstitutionService {
     }
 
     public void deleteInstitutionById(Long id) {
+
         boolean exists = institutionRepository.existsById(id);
         if (!exists) {
             throw new IllegalStateException("Institution with given id does not exist");
