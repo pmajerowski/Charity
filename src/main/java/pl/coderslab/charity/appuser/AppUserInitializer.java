@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Controller;
 import pl.coderslab.charity.role.Role;
-import pl.coderslab.charity.role.RoleRepository;
+import pl.coderslab.charity.role.RoleService;
 
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.Set;
 @DependsOn("roleInitializer")
 public class AppUserInitializer {
 
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     @Bean
     CommandLineRunner userCmdLineRunner(AppUserRepository appUserRepository) {
@@ -25,24 +25,24 @@ public class AppUserInitializer {
             return null;
         }
         return args -> {
-            Set<Role> roleSetUser = roleRepository.findByName("ROLE_USER");
-            Set<Role> roleSetAdmin = roleRepository.getAllBy();
+            Set<Role> roleSetUser = roleService.findRolesByName("ROLE_USER");
+            Set<Role> roleSetAdmin = roleService.findAllRoles();
 
-            AppUser roleUser = new AppUser();
-            roleUser.setEmail("test@charity_donation.com");
-            roleUser.setPassword("$2a$04$YTzpKRrbxj4hhLg7fJ5ol.F0CBzreu.WJitw3mpvaNsQvOwj1Fma6");
-            roleUser.setFirstName("User");
-            roleUser.setEnabled(true);
-            roleUser.setRoles(roleSetUser);
+            AppUser userUser = new AppUser();
+            userUser.setEmail("test@charity_donation.com");
+            userUser.setPassword("$2a$04$YTzpKRrbxj4hhLg7fJ5ol.F0CBzreu.WJitw3mpvaNsQvOwj1Fma6");
+            userUser.setFirstName("User");
+            userUser.setEnabled(true);
+            userUser.setRoles(roleSetUser);
 
-            AppUser roleAdmin = new AppUser();
-            roleAdmin.setEmail("admin@charity_donation.com");
-            roleAdmin.setPassword("$2a$04$Uz/M/RlnCJdz3qwO0rAMQO1lgQWoEduA.9q.76DR.eRXjrJxfqcDi");
-            roleAdmin.setFirstName("Admin");
-            roleAdmin.setEnabled(true);
-            roleAdmin.setRoles(roleSetAdmin);
+            AppUser userAdmin = new AppUser();
+            userAdmin.setEmail("admin@charity_donation.com");
+            userAdmin.setPassword("$2a$04$Uz/M/RlnCJdz3qwO0rAMQO1lgQWoEduA.9q.76DR.eRXjrJxfqcDi");
+            userAdmin.setFirstName("Admin");
+            userAdmin.setEnabled(true);
+            userAdmin.setRoles(roleSetAdmin);
 
-            appUserRepository.saveAll(List.of(roleUser, roleAdmin));
+            appUserRepository.saveAll(List.of(userUser, userAdmin));
 
         };
     }
