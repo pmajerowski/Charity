@@ -3,22 +3,21 @@ package pl.coderslab.charity.appuser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.stereotype.Controller;
 import pl.coderslab.charity.role.Role;
 import pl.coderslab.charity.role.RoleService;
-
 
 import java.util.List;
 import java.util.Set;
 
-@Controller
+@Configuration
 @RequiredArgsConstructor
-@DependsOn("roleInitializer")
 public class AppUserInitializer {
 
     private final RoleService roleService;
 
+    @DependsOn("roleInitializer")
     @Bean
     CommandLineRunner userCmdLineRunner(AppUserRepository appUserRepository) {
         if (appUserRepository.count() > 0) {

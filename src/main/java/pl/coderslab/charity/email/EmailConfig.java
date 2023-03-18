@@ -12,11 +12,12 @@ public class EmailConfig {
     @Bean
     public JavaMailSender javaMailSender() {
         String password = System.getenv("EMAIL_PASSWORD");
+        String email = System.getenv("EMAIL");
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("cdonation6@gmail.com");
+        mailSender.setUsername(email);
         mailSender.setPassword(password);
 
         Properties props = mailSender.getJavaMailProperties();
