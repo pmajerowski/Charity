@@ -6,7 +6,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserRepository;
+import pl.coderslab.charity.institution.Institution;
+import pl.coderslab.charity.institution.InstitutionRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,13 +24,20 @@ public class UserRepositoryIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private AppUserRepository userRepository;
 
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
+
 
     @Test
     public void givenEndpointURL_ShouldGet200ResponseAndView() throws Exception {
+
+        List<Institution> institutions = institutionRepository.findAll();
         // when // then
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("institutions"))
+                .andExpect(model().attribute("institutions", institutions))
                 .andExpect(view().name("index"));
     }
 
