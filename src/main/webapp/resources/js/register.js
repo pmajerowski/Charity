@@ -30,7 +30,10 @@ pass1.onkeyup = function() {
     if(pattern.test(pass1.value)) {
         pass1.style.backgroundColor = "rgba(240,250,161,0.75)";
         btn.disabled = false;
+    } else {
+        btn.disabled = true;
     }
+
 }
 
 

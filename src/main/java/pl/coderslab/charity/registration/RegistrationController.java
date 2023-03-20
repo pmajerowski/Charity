@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.appuser.AppUserService;
-import pl.coderslab.charity.dto.UserDTO;
 
 import javax.validation.Valid;
 

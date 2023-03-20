@@ -34,7 +34,7 @@ public class Donation {
     @Column
     private Integer quantity;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @JoinTable(
             name = "donations_categories",
             joinColumns = { @JoinColumn(name = "donation_id") },

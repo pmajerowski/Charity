@@ -3,6 +3,7 @@ package pl.coderslab.charity.email;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -12,29 +13,48 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
+@ConditionalOnProperty(
+        value="email-configuration.enabled",
+        havingValue = "true"
+)
 @AllArgsConstructor
-public class EmailService implements EmailSender{
+public class EmailService implements EmailSender {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
 
     private final JavaMailSender mailSender;
-    private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+
+    private final CredentialsConfiguration credentialsConfiguration;
 
     @Override
     @Async
     public void send(String to, String subject, String email) {
-        try{
+
+        try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
+            buildHelper(to, subject, email, mimeMessage);
+
+            mailSender.send(mimeMessage);
+
+        } catch (Exception e) {
+            LOGGER.debug("Specify email sending credentials");
+
+        }
+    }
+
+    private MimeMessageHelper buildHelper(String to, String subject, String email, MimeMessage mimeMessage) {
+        try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setFrom("cdonation6@gmail.com");
+            helper.setFrom(credentialsConfiguration.getEmail());
 
-            mailSender.send(mimeMessage);
+            return helper;
 
         } catch (MessagingException e) {
             LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");
         }
-
     }
 }

@@ -15,12 +15,28 @@
         <header class="header--main-page">
             <nav class="container container--70">
                 <ul class="nav--actions">
-                    <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-                    <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+                    <sec:authorize access="!isAuthenticated()">
+                        <li><a href="/login" class="btn btn--small">Zaloguj</a></li>
+                        <li><a href="/register" class="btn btn--small">Załóż konto</a></li>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                        <li class="logged-user">
+                            Witaj ${user.firstName}
+                            <ul class="dropdown">
+                                <li><a href="#">Profil</a></li>
+                                <li><a href="#">Moje zbiórki</a></li>
+                                <li><a href="#" id="logout-link">Wyloguj</a></li>
+
+                                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                </form>
+                            </ul>
+                        </li>
+                    </sec:authorize>
                 </ul>
 
                 <ul>
-                    <li><a href="/form" class="btn btn--without-border active">Start</a></li>
+                    <li><a href="/form" class="btn btn--without-border active">Złóż darowiznę</a></li>
                     <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
                     <li><a href="#" class="btn btn--without-border">O nas</a></li>
                     <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -84,7 +100,12 @@
                 </div>
             </div>
 
-            <a href="/register" class="btn btn--large">Załóż konto</a>
+            <sec:authorize access="!isAuthenticated()">
+                <a href="/register" class="btn btn--large">Załóż konto</a>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a href="/form" class="btn btn--large">Złóż darowiznę</a>
+            </sec:authorize>
         </section>
 
         <section class="about-us">

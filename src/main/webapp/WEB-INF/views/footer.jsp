@@ -15,17 +15,17 @@
 
             <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
 
-            <button class="btn" type="submit">Wyślij</button>
+            <button class="btn" type="submit" disabled>Wyślij</button>
         </form>
     </div>
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small">
-                <img src="<c:url value="resources/images/icon-facebook.svg"/>" alt="facebook">
+                <img src="<c:url value="/resources/images/icon-facebook.svg"/>" alt="facebook">
             </a>
             <a href="#" class="btn btn--small">
-                <img src="<c:url value="resources/images/icon-instagram.svg"/>" alt="instagram">
+                <img src="<c:url value="/resources/images/icon-instagram.svg"/>" alt="instagram">
             </a>
         </div>
     </div>

@@ -23,6 +23,7 @@ public class DonationService {
     @Transactional
     public void saveDonation(Donation donation) {
         donationRepository.save(donation);
+        sendConfirmationEmail(donation);
     }
 
     public Integer numberOfDonations() {
@@ -41,7 +42,7 @@ public class DonationService {
         return numberOfBags;
     }
 
-    public void sendConfirmationEmail(Donation donation){
+    private void sendConfirmationEmail(Donation donation){
         String to = donation.getAppUser().getEmail();
         String subject = "Charity - Potwierdzenie darowizny";
         String email = buildDonationSummaryEmail(donation);

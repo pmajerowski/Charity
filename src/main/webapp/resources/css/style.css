@@ -442,7 +442,18 @@ h2:after {
   padding: 0 15px;
 }
 
-/* line 30, scss/modules/_base.scss */
+.container-table {
+  margin: 0 auto;
+  padding: 10px 50px;
+
+  border: dot-dash #f9c910;
+}
+
+.container-table tr td {
+  padding: 9px;
+}
+
+  /* line 30, scss/modules/_base.scss */
 .container--70 {
   width: 70vw;
 }
@@ -547,10 +558,10 @@ form .form-group textarea {
   border: 1px solid #3c3c3c;
   background: transparent;
   padding: 4px 14px;
-  max-width: 200px;
+  max-width: 250px;
   width: 100%;
   resize: none;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 /* line 21, scss/modules/_forms.scss */
@@ -673,6 +684,10 @@ form .form-group--dropdown .dropdown {
   max-width: 200px;
   min-height: 38px;
   position: relative;
+}
+
+.dropdown li a:hover {
+  color: #f9c910;
 }
 
 /* line 111, scss/modules/_forms.scss */
@@ -866,6 +881,14 @@ header.header--main-page {
   background-repeat: no-repeat;
   background-size: 70vw;
   height: 100vh;
+}
+
+header.header--main-page--admin {
+  background-image: url(../images/form-bg.jpg);
+  /*background-position: bottom left -30vh;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: 70vw;*/
+  height: 80vh;
 }
 
 @media (min-width: 990px) and (max-width: 1230px) {
@@ -1099,8 +1122,8 @@ header nav ul {
 
 /* line 16, scss/modules/_navigation.scss */
 header nav ul.nav--actions {
-  font-size: 1.4rem;
-  color: #737373;
+  font-size: 1.5rem;
+  color: #282828;
   margin: 30px 0 8px;
 }
 
@@ -1111,7 +1134,11 @@ header nav ul.nav--actions .logged-user {
   cursor: pointer;
 }
 
-/* line 26, scss/modules/_navigation.scss */
+header nav ul.nav--actions .logged-user:hover {
+  color: #f9c910;
+}
+
+  /* line 26, scss/modules/_navigation.scss */
 header nav ul.nav--actions .logged-user:after {
   content: "";
   width: 15px;
@@ -1133,10 +1160,10 @@ header nav ul.nav--actions .logged-user ul {
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: right;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 12px 0 0;
-  font-size: 1.4rem;
-  width: 120px;
+  font-size: 1.6rem;
+  width: 130px;
   right: 0;
 }
 
@@ -1443,9 +1470,20 @@ header nav ul li:last-of-type {
   margin-bottom: 35px;
 }
 
-/* line 49, scss/modules/homepage-sections/_help.scss */
+  /* line 49, scss/modules/homepage-sections/_help.scss */
 .help--slides-items li:last-child {
   margin-bottom: 0;
+}
+
+.col-table {
+  align-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
 }
 
 /* line 54, scss/modules/homepage-sections/_help.scss */
@@ -1455,7 +1493,7 @@ header nav ul li:last-of-type {
 
 /* line 57, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col:last-child {
-  text-align: right;
+  /*text-align: right;*/
 }
 
 /* line 61, scss/modules/homepage-sections/_help.scss */
@@ -1471,7 +1509,7 @@ header nav ul li:last-of-type {
 
 /* line 72, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col:last-child:after {
-  float: right;
+  /*float: right;*/
 }
 
 /* line 77, scss/modules/homepage-sections/_help.scss */
@@ -1483,6 +1521,21 @@ header nav ul li:last-of-type {
   margin-bottom: 5px;
 }
 
+.title {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: light;
+  font-size: 1.2rem;
+}
+
 /* line 83, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col .subtitle {
   font-family: 'Merriweather', serif;
@@ -1491,6 +1544,22 @@ header nav ul li:last-of-type {
   font-size: 1.2rem;
 }
 
+/* line 77, scss/modules/homepage-sections/_help.scss */
+.help--slides-items .col-table .title {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+/* line 83, scss/modules/homepage-sections/_help.scss */
+.help--slides-items .col-table .subtitle {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: light;
+  font-size: 1.2rem;
+}
 /* line 88, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col .text {
   font-family: 'Merriweather', serif;

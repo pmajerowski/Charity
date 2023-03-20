@@ -14,6 +14,7 @@ import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -27,22 +28,27 @@ public class DonationController {
     private final AppUserService appUserService;
 
     @GetMapping
-    public String displayForm(Model model) {
+    public String displayForm(Model model, Principal principal) {
+        if (null != principal) {
+            AppUser appUser = appUserService.findByEmail(principal.getName()).orElse(null);
+            model.addAttribute("user", appUser);
+        }
         Donation donation = new Donation();
         model.addAttribute("donation", donation);
         return "form";
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public String saveDonation(Donation donation) {
+    public String saveDonation(Donation donation, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
 
         AppUser appUser = appUserService.findByEmail(userEmail).get();
+        model.addAttribute("user", appUser);
 
         donation.setAppUser(appUser);
         donationService.saveDonation(donation);
-        donationService.sendConfirmationEmail(donation);
+
         return "form-confirmation";
     }
 

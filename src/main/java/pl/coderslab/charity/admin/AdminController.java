@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.admin;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -7,40 +7,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
-import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionService;
 
 import java.security.Principal;
 import java.util.List;
 
-
 @Controller
 @AllArgsConstructor
-public class HomeController {
+@RequestMapping("/admin")
+public class AdminController {
 
-    private final InstitutionService institutionService;
-    private final DonationService donationService;
     private final AppUserService appUserService;
 
-    @RequestMapping("/")
-    public String homeAction(Model model, Principal principal) {
+    private final InstitutionService institutionService;
+
+    @GetMapping("/index")
+    public String landingPageAdmin(Model model, Principal principal) {
         if (null != principal) {
             AppUser appUser = appUserService.findByEmail(principal.getName()).orElse(null);
             model.addAttribute("user", appUser);
         }
-
-        List<Institution> institutions = institutionService.getAllInstitutions();
-        model.addAttribute("institutions", institutions);
-
-        model.addAttribute("donationsNumber", donationService.numberOfDonations());
-        model.addAttribute("bagsDonated", donationService.numberOfBagsDonated());
-
-        return "index";
+        return "index_admin";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+
+
 }
