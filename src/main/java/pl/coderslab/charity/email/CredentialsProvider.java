@@ -12,38 +12,25 @@ public class CredentialsProvider {
 
     public String getEmail() {
         String email = System.getenv(EMAIL);
-        if (email == null) {
-            return "test@email.org";
-        }
         return email;
     }
 
     public String getPassword() {
         String password = System.getenv(EMAIL_PASSWORD);
-        if (password == null) {
-            return "password";
-        }
         return password;
     }
 
     public String getHostName() {
-        String hostName = System.getenv(HOST_NAME);
-        if (hostName == null) {
-            return "hostname";
-        }
-        return hostName;
+        return System.getenv(HOST_NAME);
     }
 
     public String getPort() {
         String port = System.getenv(PORT);
-        if (port == null) {
-            return "0";
-        }
         return port;
     }
 
     public boolean areCredentialsConfigured() {
-        return System.getenv(EMAIL) != null || System.getenv(EMAIL_PASSWORD) != null;
+        return getEmail() != null || getPassword() != null;
     }
 
 
