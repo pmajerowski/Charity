@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Institution {
     @Id
     @SequenceGenerator(
