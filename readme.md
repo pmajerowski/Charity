@@ -68,20 +68,8 @@ To run the application along with a database deployed via docker-compose.yml, fo
   $ <code>docker-compose up -d</code> <br>
 This will download and start the necessary Docker images for the database, and create a Docker network for them to communicate on.
 <br>
-<li><strong>OPTIONAL</strong></li>
-  <p>In order to activate the email sending features it is required to configure environmental variables. The messages will then be sent from the given email account.</p>
-  <ul>
-  <li>$ <code>export EMAIL=</code>{email_address} </li>
-  <li>$ <code>export EMAIL_PASSWORD=</code>{email_password} <br>
-    (note: some services, e.g. Google, require unique generated token. <br>
-    Find out more: <a href="https://www.getmailbird.com/gmail-app-password/">https://www.getmailbird.com/gmail-app-password/</a>)</li>
-  <li>$ <code>export HOST_NAME=</code>{host_name}</li>
-  <li>$ <code>export PORT=</code>{port}</li>
   <br>
-  </ul>
-
-(<strong>note: IF YOU DECIDE TO CONFIGURE THE ENVIRONMENTAL VARIABLES, in order to finish the registration process you'll need to activate the account using a link sent to you by email - the real email address would be required in the registration process</strong>)
- 
+  </ul> 
   <li>Run the application with this command:</li>
   $ <code>java -jar target/charity-0.0.1-SNAPSHOT.jar</code> <br>
   
