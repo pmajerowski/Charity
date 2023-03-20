@@ -27,8 +27,6 @@ public class UserRepositoryIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private InstitutionRepository institutionRepository;
 
-
-
     @Test
     public void givenEndpointURL_ShouldGet200ResponseAndView() throws Exception {
 
@@ -77,5 +75,4 @@ public class UserRepositoryIntegrationTest extends BaseIntegrationTest {
         userRepository.save(new AppUser("SAMPLE4", "email4@example.com"));
         userRepository.flush();
     }
-
 }

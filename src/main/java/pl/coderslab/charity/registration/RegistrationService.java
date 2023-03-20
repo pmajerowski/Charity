@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
-import pl.coderslab.charity.email.CredentialsProvider;
+import pl.coderslab.charity.email.CredentialsConfiguration;
 import pl.coderslab.charity.email.EmailSender;
 import pl.coderslab.charity.registration.token.ConfirmationToken;
 import pl.coderslab.charity.registration.token.ConfirmationTokenService;
@@ -29,7 +29,7 @@ public class RegistrationService {
     private final RoleService roleService;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
-    private final CredentialsProvider credentialsProvider;
+    private final CredentialsConfiguration credentialsConfiguration;
 
     public String register(UserDTO request) {
         boolean isEmailValid = emailValidator.test(request.getUsername());
@@ -48,7 +48,7 @@ public class RegistrationService {
         Set<Role> roles = roleService.findRolesByName("ROLE_USER");
         appUser.setRoles(roles);
 
-        if (credentialsProvider.areCredentialsConfigured()) {
+        if (credentialsConfiguration.areCredentialsConfigured()) {
             appUser.setEnabled(false);
             String token = signUpUser(appUser);
 
@@ -82,7 +82,6 @@ public class RegistrationService {
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
-            // TODO: obsługa
         }
 
         confirmationTokenService.setConfirmedAt(token);

@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.internet.MimeMessage;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class EmailServiceTest {
@@ -26,7 +28,7 @@ public class EmailServiceTest {
     private MimeMessageHelper mimeMessageHelper;
 
     @Mock
-    private CredentialsProvider credentialsProvider;
+    private CredentialsConfiguration credentialsConfiguration;
 
     @InjectMocks
     private EmailService emailService;
@@ -34,8 +36,8 @@ public class EmailServiceTest {
     @Test
     public void testSend() throws Exception {
         // given
-        lenient().when(credentialsProvider.getPassword()).thenReturn("pass");
-        lenient().when(credentialsProvider.getEmail()).thenReturn("email");
+        lenient().when(credentialsConfiguration.getPassword()).thenReturn("pass");
+        lenient().when(credentialsConfiguration.getEmail()).thenReturn("email");
 
         String to = "john@example.com";
         String subject = "Test email";

@@ -1,31 +1,28 @@
 package pl.coderslab.charity.email;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import javax.annotation.PostConstruct;
 import java.util.Properties;
 
 @Configuration
 public class EmailConfig {
 
     @Bean
-    public JavaMailSender javaMailSender(CredentialsProvider credentialsProvider) {
+    public JavaMailSender javaMailSender(CredentialsConfiguration config) {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         Properties props = mailSender.getJavaMailProperties();
 
-        if (credentialsProvider.areCredentialsConfigured()) {
-            String password = credentialsProvider.getPassword();
-            String email = credentialsProvider.getEmail();
-            String host = credentialsProvider.getHostName();
-            String port = credentialsProvider.getPort();
+        if (config.areCredentialsConfigured()) {
+            String password = config.getPassword();
+            String email = config.getEmail();
+            String host = config.getHostName();
+            int port = config.getPort();
 
             mailSender.setHost(host);
-            mailSender.setPort(Integer.parseInt(port));
+            mailSender.setPort(port);
             mailSender.setUsername(email);
             mailSender.setPassword(password);
 
@@ -40,4 +37,3 @@ public class EmailConfig {
         return mailSender;
     }
 }
-

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -14,14 +13,18 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-@Conditional(CredentialsPresent.class)
+@ConditionalOnProperty(
+        value="email-configuration.enabled",
+        havingValue = "true"
+)
 @AllArgsConstructor
 public class EmailService implements EmailSender {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
 
     private final JavaMailSender mailSender;
-    private final CredentialsProvider credentialsProvider;
+
+    private final CredentialsConfiguration credentialsConfiguration;
 
     @Override
     @Async
@@ -45,7 +48,7 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setFrom(credentialsProvider.getEmail());
+            helper.setFrom(credentialsConfiguration.getEmail());
 
             return helper;
 
@@ -55,4 +58,3 @@ public class EmailService implements EmailSender {
         }
     }
 }
-
