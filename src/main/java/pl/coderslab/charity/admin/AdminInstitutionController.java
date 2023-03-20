@@ -14,23 +14,28 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin/institutions")
 @AllArgsConstructor
-@RequestMapping("/admin")
-public class AdminController {
+public class AdminInstitutionController {
 
     private final AppUserService appUserService;
 
     private final InstitutionService institutionService;
 
-    @GetMapping("/index")
-    public String landingPageAdmin(Model model, Principal principal) {
+    @GetMapping("/list")
+    public String institutionsPage(Model model, Principal principal) {
         if (null != principal) {
             AppUser appUser = appUserService.findByEmail(principal.getName()).orElse(null);
             model.addAttribute("user", appUser);
         }
-        return "index_admin";
+        List<Institution> institutions = institutionService.getAllInstitutions();
+        model.addAttribute("institutions", institutions);
+
+        return "institutions";
     }
 
-
-
+    @GetMapping("/add")
+    public String addInstitutionPage() {
+        return "institution_add";
+    }
 }
