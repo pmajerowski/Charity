@@ -13,10 +13,12 @@ public class EmailConfig {
     public JavaMailSender javaMailSender(CredentialsProvider credentialsProvider) {
         String password = credentialsProvider.getPassword();
         String email = credentialsProvider.getEmail();
+        String host = credentialsProvider.getHostName();
+        String port = credentialsProvider.getPort();
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
+        mailSender.setHost(host);
+        mailSender.setPort(Integer.parseInt(port));
         mailSender.setUsername(email);
         mailSender.setPassword(password);
 

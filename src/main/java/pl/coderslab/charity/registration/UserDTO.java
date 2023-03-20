@@ -1,4 +1,4 @@
-package pl.coderslab.charity.dto;
+package pl.coderslab.charity.registration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

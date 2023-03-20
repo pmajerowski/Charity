@@ -36,7 +36,7 @@
                 </ul>
 
                 <ul>
-                    <li><a href="/admin/institutions" class="btn btn--without-border">Instytucje</a></li>
+                    <li><a href="/admin/institutions/list" class="btn btn--without-border">Instytucje</a></li>
                     <li><a href="#" class="btn btn--without-border">Administratorzy</a></li>
                     <li><a href="#" class="btn btn--without-border">Użytkownicy</a></li>
 

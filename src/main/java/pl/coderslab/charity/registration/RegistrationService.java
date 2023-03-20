@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.appuser.AppUser;
 import pl.coderslab.charity.appuser.AppUserService;
-import pl.coderslab.charity.dto.UserDTO;
 import pl.coderslab.charity.email.CredentialsProvider;
 import pl.coderslab.charity.email.EmailSender;
 import pl.coderslab.charity.registration.token.ConfirmationToken;

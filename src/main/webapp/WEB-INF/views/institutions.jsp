@@ -48,7 +48,7 @@
             <thead>
                 <tr>
                     <td>
-                        <a href="/institution/add" class="btn">Dodaj instytucję</a>
+                        <a href="/admin/institutions/add" class="btn">Dodaj instytucję</a>
                     </td>
                 </tr>
             </thead>
@@ -61,9 +61,9 @@
                             <div class="subtitle">${inst.description}</div>
                         </td>
                         <td>
-                            <a class="btn--small btn--highlighted" href="/institution/${inst.id}">Szczegóły</a>
+                            <a class="btn--small btn--highlighted" href="admin/institution/${inst.id}">Szczegóły</a>
                             <a class="btn--small btn--highlighted" href="#">Edytuj</a>
-                            <a class="btn--small btn--highlighted" href="/institution/delete/${inst.id}">Usuń</a>
+                            <a class="btn--small btn--highlighted" href="#">Usuń</a>
                         </td>
                     </tr>
 
