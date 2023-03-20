@@ -49,6 +49,11 @@ public class AppUser {
 
     private boolean enabled = true;
 
+    public AppUser(String firstName, String email) {
+        this.firstName = firstName;
+        this.email = email;
+    }
+
     public boolean getEnabled() {
         return enabled;
     }
